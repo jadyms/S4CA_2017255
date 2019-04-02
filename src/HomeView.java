@@ -75,6 +75,7 @@ public class HomeView extends JFrame {
         myPanel2.add(btn4);
         
           //Add Buttons to Panel 2
+          
         myPanel3.add(btn5);
 
         //Panel 2 layout
