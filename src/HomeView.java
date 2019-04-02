@@ -61,8 +61,8 @@ public class HomeView extends JFrame {
         btn1.setActionCommand(b5);       
       
         //Instance of Customer Controller that holds Action Events     
-      //  cController = new CustomerController();
-        //btn1.addActionListener(cController);
+       Logout l = new Logout();
+        btn5.addActionListener(l);
         //btn2.addActionListener(cController);
 
         //Add Welcome message to Panel 1
