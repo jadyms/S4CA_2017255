@@ -3,25 +3,29 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 /**
  *
  * @author JadyMartins
+ * Use of Anonymous Action Listener
  */
 public class CustomerView extends JFrame{
     
     HomeView homeView;
+         
         
     public CustomerView(){
         
-        homeView = new HomeView();
+
+  
         
     }
     public void AddNewCustomerPanel(){
       
-         JPanel myPanel2 = new JPanel();
+        JPanel myPanel2 = new JPanel();
          String b1 = "Add Customer";
          String b2 = "Manage Existing Customer";
         // String b3 = "Manage Rental"; 
@@ -44,8 +48,20 @@ public class CustomerView extends JFrame{
        btn1.addActionListener(new ActionListener(){
            public void actionPerformed(ActionEvent e) {
        
-               System.out.println("Add Customer");
+               System.out.println("Call Add customer Class");
+               CreateCustomeView createCustomer = new CreateCustomeView();
+               createCustomer.addCustomer();
+               
            }});
+       
+       btn2.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+       
+               System.out.println("Call Manage Customer Class");
+           }});
+       
+       
+       
 
                 //Add Buttons to Panel 2
         myPanel2.add(btn1);
@@ -56,8 +72,11 @@ public class CustomerView extends JFrame{
            //Panel 2 layout
         GridLayout mgr = new GridLayout(1,2);
         myPanel2.setLayout(mgr);
-        
-        homeView.mainPanel("Select an option", myPanel2, "Logout");
+    
+        homeView = new HomeView("Select an option", myPanel2, "Logout");
+     
+      // homeView.mainPanel("Select an option", myPanel2, "Logout");
+               //homeView.HomePanel("Select an option", myPanel2, "Logout");
 
              
         

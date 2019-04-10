@@ -14,12 +14,23 @@ import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 public class HomeView extends JFrame {
     
       JDialog frame;
-    
+     String message;
+     JPanel panel;
+     String logout;
+               
+      public HomeView(){
+         HomePanel();
+        
+      }
       
-    public HomeView(){
+      public HomeView(String message, JPanel panel, String logout){
+          this.message = message;
+          this.panel = panel;
+          this.logout = logout;
+          mainPanel(message, panel, logout);
+      }
+         
       
-        HomePanel();
-    }
     private void newFrame(int h, int w) {
        
         frame = new JDialog(frame, "Home");
@@ -31,6 +42,7 @@ public class HomeView extends JFrame {
         frame.repaint();
     }
     
+   
     public void HomePanel(){
       
          JPanel myPanel2 = new JPanel();
@@ -52,11 +64,18 @@ public class HomeView extends JFrame {
         btn3.setActionCommand(b3);
         btn4.setActionCommand(b4);
 
+        //Add Action Listener
         btn1.addActionListener(new ActionListener(){
            public void actionPerformed(ActionEvent e) {
        
-               System.out.println("Manage Customer");
+               System.out.println("Customer options");
+               CustomerView customer = new CustomerView();
+               customer.AddNewCustomerPanel();
+               
            }});
+       
+        
+        
                 //Add Buttons to Panel 2
         myPanel2.add(btn1);
         myPanel2.add(btn2);
@@ -67,7 +86,7 @@ public class HomeView extends JFrame {
         GridLayout mgr = new GridLayout(2,2);
         myPanel2.setLayout(mgr);
         
-        mainPanel("Select an option", myPanel2, "Logout");
+       mainPanel("Select an option", myPanel2, "Logout");
         
     }
     
@@ -86,7 +105,7 @@ public class HomeView extends JFrame {
         //Logout button
          JButton btn5 = new JButton(b5);
         
-        //Instance of Customer Controller that holds Action Events     
+        //Instance of Controller that holds Action Events     
        Logout l = new Logout();
         btn5.addActionListener(l);
         //btn2.addActionListener(cController);
@@ -94,11 +113,9 @@ public class HomeView extends JFrame {
         //Add Welcome message to Panel 1
         myPanel1.add(myLabel);
         
-
-        
+    
           //Add Buttons to Panel 2
-          
-        myPanel3.add(btn5);
+       myPanel3.add(btn5);
 
      
         //Frame Layout
