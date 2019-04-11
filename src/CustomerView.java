@@ -2,9 +2,11 @@
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -58,6 +60,17 @@ public class CustomerView extends JFrame{
            public void actionPerformed(ActionEvent e) {
        
                System.out.println("Call Manage Customer Class");
+               
+       
+               Model myModel = new Model();
+               ResultSet rs = myModel.showCustomers();
+               
+            //customerView.setComplaint(rs);
+            
+             ManageCustomer viewCustomer = new ManageCustomer();
+           viewCustomer.viewCustomers(rs);
+               
+               
            }});
        
        

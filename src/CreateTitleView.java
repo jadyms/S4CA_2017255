@@ -154,14 +154,14 @@ public class CreateTitleView extends JFrame {
 
    
      public void showMovies(ResultSet rs) {
-        String[] columnName = {"ID", "Language", "Year"};
+        String[] columnName = {"ID", "Media", "Year"};
         try {
             int i = 0;
             while (rs.next()) {
 
-                data[i][0] = rs.getString("mov_id");
-                data[i][1] = rs.getString("mov_lang");
-                data[i][2] = rs.getString("mov_year");
+                data[i][0] = rs.getString("id");
+                data[i][1] = rs.getString("media_type");
+                data[i][2] = rs.getString("year");
                // data[i][3] = rs.getString("aptStatus");
                // data[i][4] = rs.getString("cEmail");
                 i++;

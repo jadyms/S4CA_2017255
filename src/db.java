@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 public class db {
 
-    String[][] data = new String[20][4];
+    String[][] data = new String[50][4];
     CustomerView customerView;
     Connection conn = null;
     Statement stmt = null;

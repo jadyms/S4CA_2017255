@@ -71,9 +71,17 @@ public class TitlesView extends JFrame{
        
                System.out.println("Call Manage Titles Class");
                
+               String[] possibilities = {"movies", "Live Concert", "Music", "Box Set"};
+            titleType = (String) JOptionPane.showInputDialog(
+                    null, "Select title type", "What title would you like to add?", JOptionPane.PLAIN_MESSAGE, null,
+                    possibilities,
+                    possibilities[0]);
+            
                Model myModel = new Model();
-               ResultSet rs = myModel.showTitles();
-         
+               ResultSet rs = myModel.showTitles(titleType);
+               
+            //customerView.setComplaint(rs);
+            
               CreateTitleView createTitle = new CreateTitleView();
            createTitle.showMovies(rs);
                
