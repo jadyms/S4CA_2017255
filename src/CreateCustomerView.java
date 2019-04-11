@@ -24,6 +24,7 @@ public class CreateCustomerView extends JFrame{
     private String[] subscription = new String[]{ "TV Lover", "Music Lover", "Premium", "Movie Lover"};
     JDialog frame;
        HomeView homeView;
+       
     public CreateCustomerView(){
         
     }

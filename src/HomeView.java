@@ -73,6 +73,15 @@ public class HomeView extends JFrame {
                customer.AddNewCustomerPanel();
                
            }});
+        
+        btn2.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+       
+               System.out.println("Titles Options");
+               TitlesView titles = new TitlesView();
+               titles.TitlesPanel();
+               
+           }});
        
         
         
