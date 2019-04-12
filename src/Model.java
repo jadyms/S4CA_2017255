@@ -45,6 +45,19 @@ public class Model {
 		return rs;	
              
     }
+    
+     public ResultSet showPoints() {   
+         
+        String query = "SELECT * FROM points;";
+       // String query ="SELECT * FROM '" + titleType + "';";
+        
+            
+        rs = newdb.newQuery(query);
+        
+ 
+		return rs;	
+             
+    }
 /*
     //get email and password from login session
     public boolean customerLogin(String email, String password) {

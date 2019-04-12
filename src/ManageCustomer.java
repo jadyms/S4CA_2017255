@@ -3,6 +3,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -16,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
 public class ManageCustomer extends JFrame{
     
     private String[][] data = new String[10][6];
-    static JTable searchTitles;
+    static JTable searchCustomer;
        HomeView homeView;
     
     public void viewCustomers(ResultSet rs) {
@@ -39,13 +40,35 @@ public class ManageCustomer extends JFrame{
         }
 
 
+        
         DefaultTableModel model = new DefaultTableModel(data, columnName);
-        searchTitles = new JTable(model);
-       // searchTitles.getSelectionModel().addListSelectionListener(cController);
+        searchCustomer = new JTable(model);
+       searchCustomer.getSelectionModel().addListSelectionListener((e) -> {
+           
+           int row = searchCustomer.getSelectedRow();
+        String fname = (String) searchCustomer.getValueAt(row, 0);
+        String lname = (String) searchCustomer.getValueAt(row, 1);
+        String subscription = (String) searchCustomer.getValueAt(row, 2);
+        String card = (String) searchCustomer.getValueAt(row, 3);
+        String loyalty_number = (String) searchCustomer.getValueAt(row, 4); 
+        String hold = (String) searchCustomer.getValueAt(row, 5);
+       // String message = ("Location: "+loc + "\r\n Provider: " + provider+ "\r\n Provider Email: " +pEmail+ " \r\nDate: " +fdate+ " \r\nTime: " +ftime);
+        String message = ("Print" + fname + "," + lname);
+         int q = JOptionPane.showConfirmDialog(null, message, "Confirm your information ", JOptionPane.YES_NO_OPTION);
+         /*
+         if (q==0){
+             myModel.bookingApt(fdate, ftime, pEmail, loginView.getEmail());
+              JOptionPane.showMessageDialog(null, "Your booking has been placed.\r\n You can view it on your upcoming appointments", "Bookings", JOptionPane.DEFAULT_OPTION);
+             
+             System.out.println(message);
+         }
+           
+           */
+       });
 
-        JScrollPane sp = new JScrollPane(searchTitles, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-        searchTitles.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        searchTitles.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+        JScrollPane sp = new JScrollPane(searchCustomer, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        searchCustomer.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        searchCustomer.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 
         //Panel with appointmnets information
         JPanel myPanel = new JPanel();

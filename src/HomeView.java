@@ -3,6 +3,7 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -83,7 +84,29 @@ public class HomeView extends JFrame {
                
            }});
        
+        btn3.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+       
+               
+                            
+               System.out.println("Manage Rental");
+               RentalView rental = new RentalView();
+               rental.RentalPanel();
+           }});
         
+        
+        btn4.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e) {
+       
+               
+               Model myModel = new Model();
+               ResultSet rs = myModel.showPoints();
+               
+               System.out.println("Membership Card");
+               LoyaltyCardView loyaltyCard = new LoyaltyCardView();
+               loyaltyCard.viewPoints(rs);
+               
+           }});
         
                 //Add Buttons to Panel 2
         myPanel2.add(btn1);

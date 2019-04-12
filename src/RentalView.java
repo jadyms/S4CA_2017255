@@ -4,30 +4,33 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 /**
  *
  * @author JadyMartins
- * Use of Anonymous Action Listener
  */
-public class CustomerView extends JFrame{
-    
+public class RentalView extends JFrame{
     HomeView homeView;
+     String titleType;
          
         
-    public CustomerView(){
-              
+    public RentalView(){
+               
     }
-    
-    public void AddNewCustomerPanel(){
+    public void RentalPanel(){
       
         JPanel myPanel2 = new JPanel();
-         String b1 = "Add Customer";
-         String b2 = "Manage Existing Customer";
+         String b1 = "Create Rental";
+         String b2 = "Return Rental";
         // String b3 = "Manage Rental"; 
          //String b4 = "Loyalty Card";
         //Panel 2 for buttons
@@ -42,31 +45,49 @@ public class CustomerView extends JFrame{
         btn1.setActionCommand(b1);
         btn2.setActionCommand(b2);
        // btn3.setActionCommand(b3);
-        //btn4.setActionCommand(b4);
+        //btn4.setActionCommand(b4); 
         
        //Add Action Listener as Anonymous Class
        btn1.addActionListener(new ActionListener(){
            public void actionPerformed(ActionEvent e) {
        
-               System.out.println("Call Add customer Class");
-               CreateCustomerView createCustomer = new CreateCustomerView();
-               createCustomer.addCustomer();
+               System.out.println("Call Create Rental");
                
+               //JDialog to determine title type
+            String[] possibilities = {"Movies", "Live Concert", "Music", "Box Set"};
+            titleType = (String) JOptionPane.showInputDialog(
+                    null, "Select title type", "What title would you like to add?", JOptionPane.PLAIN_MESSAGE, null,
+                    possibilities,
+                    possibilities[0]);
+            
+            
+            CreateTitleView createTitle = new CreateTitleView();
+           createTitle.addTitle(titleType);
+            
+            
+                                             
+               //CreateTitleView createTitle = new CreateTitleView();
+               //createTitle.addTitle();
            }});
        
        btn2.addActionListener(new ActionListener(){
            public void actionPerformed(ActionEvent e) {
        
-               System.out.println("Call Manage Customer Class");
+               System.out.println("Call Manage Titles Class");
                
-       
+               String[] possibilities = {"movies", "Live Concert", "Music", "Box Set"};
+            titleType = (String) JOptionPane.showInputDialog(
+                    null, "Select title type", "What title would you like to add?", JOptionPane.PLAIN_MESSAGE, null,
+                    possibilities,
+                    possibilities[0]);
+            
                Model myModel = new Model();
-               ResultSet rs = myModel.showCustomers();
+               ResultSet rs = myModel.showTitles(titleType);
                
             //customerView.setComplaint(rs);
             
-             ManageCustomer viewCustomer = new ManageCustomer();
-           viewCustomer.viewCustomers(rs);
+              CreateTitleView createTitle = new CreateTitleView();
+           createTitle.showMovies(rs);
                
                
            }});
@@ -92,5 +113,8 @@ public class CustomerView extends JFrame{
              
         
     }
+ 
+    
+    
     
 }
