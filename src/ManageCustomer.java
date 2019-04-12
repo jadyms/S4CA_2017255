@@ -8,6 +8,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
     
 /**
@@ -40,31 +42,45 @@ public class ManageCustomer extends JFrame{
         }
 
 
-        
+        //############# USING OG ANONYMOUS CLASS #############
         DefaultTableModel model = new DefaultTableModel(data, columnName);
         searchCustomer = new JTable(model);
-       searchCustomer.getSelectionModel().addListSelectionListener((e) -> {
-           
-           int row = searchCustomer.getSelectedRow();
-        String fname = (String) searchCustomer.getValueAt(row, 0);
-        String lname = (String) searchCustomer.getValueAt(row, 1);
-        String subscription = (String) searchCustomer.getValueAt(row, 2);
-        String card = (String) searchCustomer.getValueAt(row, 3);
-        String loyalty_number = (String) searchCustomer.getValueAt(row, 4); 
-        String hold = (String) searchCustomer.getValueAt(row, 5);
-       // String message = ("Location: "+loc + "\r\n Provider: " + provider+ "\r\n Provider Email: " +pEmail+ " \r\nDate: " +fdate+ " \r\nTime: " +ftime);
-        String message = ("Print" + fname + "," + lname);
-         int q = JOptionPane.showConfirmDialog(null, message, "Confirm your information ", JOptionPane.YES_NO_OPTION);
-         /*
-         if (q==0){
-             myModel.bookingApt(fdate, ftime, pEmail, loginView.getEmail());
-              JOptionPane.showMessageDialog(null, "Your booking has been placed.\r\n You can view it on your upcoming appointments", "Bookings", JOptionPane.DEFAULT_OPTION);
-             
-             System.out.println(message);
-         }
-           
-           */
-       });
+       searchCustomer.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                int row = searchCustomer.getSelectedRow();
+                String fname = (String) searchCustomer.getValueAt(row, 0);
+                String lname = (String) searchCustomer.getValueAt(row, 1);
+                String subscription = (String) searchCustomer.getValueAt(row, 2);
+                String card = (String) searchCustomer.getValueAt(row, 3);
+                String loyalty_number = (String) searchCustomer.getValueAt(row, 4);
+                String hold = (String) searchCustomer.getValueAt(row, 5);
+                // String message = ("Location: "+loc + "\r\n Provider: " + provider+ "\r\n Provider Email: " +pEmail+ " \r\nDate: " +fdate+ " \r\nTime: " +ftime);
+                String message = ( fname + " " + lname);
+               
+         
+               Object[] options = {"Update Customer ", "Create Rental", " Return Rental"};
+int n = JOptionPane.showOptionDialog(null,
+    "Update " + message + "info",
+    "Select an option",
+    JOptionPane.YES_NO_CANCEL_OPTION,
+    JOptionPane.QUESTION_MESSAGE,
+    null,
+    options,
+    options[2]);
+            
+                 // int q = JOptionPane.showConfirmDialog(null, message, "Confirm your information ", JOptionPane.YES_NO_OPTION);
+                /*
+                if (q==0){
+                myModel.bookingApt(fdate, ftime, pEmail, loginView.getEmail());
+                JOptionPane.showMessageDialog(null, "Your booking has been placed.\r\n You can view it on your upcoming appointments", "Bookings", JOptionPane.DEFAULT_OPTION);
+                
+                System.out.println(message);
+                }
+                
+                */
+            }
+        });
 
         JScrollPane sp = new JScrollPane(searchCustomer, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         searchCustomer.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);

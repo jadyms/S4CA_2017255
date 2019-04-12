@@ -123,7 +123,7 @@ public class HomeView extends JFrame {
     }
     
      public void mainPanel(String message, JPanel myPanel2, String b5) {
-        newFrame(600, 600);
+        newFrame(700, 700);
         //Panel 1 for welcome message
         JPanel myPanel1 = new JPanel();
         //message for Panel 1
