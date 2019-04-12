@@ -24,10 +24,18 @@ public class CreateCustomerView extends JFrame{
     private String[] subscription = new String[]{ "TV Lover", "Music Lover", "Premium", "Movie Lover"};
     JDialog frame;
        HomeView homeView;
+       boolean isUpdate;
        
     public CreateCustomerView(){
         
     }
+    
+    //create a constructor that receives an user as an object
+    
+    
+    // use getters to get user object info
+    
+    //Populate JTextField with getters
     
     public void addCustomer(){
             
@@ -104,4 +112,9 @@ public class CreateCustomerView extends JFrame{
      
          homeView = new HomeView("New Customer Details ", form, "Logout");
     }
+    
+    
+    
+    
+    
 }

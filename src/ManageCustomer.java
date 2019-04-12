@@ -61,13 +61,29 @@ public class ManageCustomer extends JFrame{
          
                Object[] options = {"Update Customer ", "Create Rental", " Return Rental"};
 int n = JOptionPane.showOptionDialog(null,
-    "Update " + message + "info",
-    "Select an option",
+    "Update " + message + " info",
+    "Select an option for the user",
     JOptionPane.YES_NO_CANCEL_OPTION,
     JOptionPane.QUESTION_MESSAGE,
     null,
     options,
     options[2]);
+
+if (n == 1){
+    
+    CreateRentalView createRental = new CreateRentalView();
+    createRental.createRental(loyalty_number);
+    
+    }
+else if (n==0){
+    
+    UpdateCustomerInfo updatecustomer = new UpdateCustomerInfo();
+    updatecustomer.getClass();
+}
+else if (n==2){
+    
+    
+}
             
                  // int q = JOptionPane.showConfirmDialog(null, message, "Confirm your information ", JOptionPane.YES_NO_OPTION);
                 /*
