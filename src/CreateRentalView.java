@@ -154,6 +154,11 @@ public class CreateRentalView extends JFrame {
                
             CreateTitleView createTitle = new CreateTitleView();
            createTitle.showMovies(rs);
+           
+           //create button to selecionar o filme escolhido
+           //display filme escolhido [
+          //button para criar rental
+          //add points to membership card
              
              
             }

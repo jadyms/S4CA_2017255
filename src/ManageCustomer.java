@@ -42,7 +42,7 @@ public class ManageCustomer extends JFrame{
         }
 
 
-        //############# USING OG ANONYMOUS CLASS #############
+        //############# USING ANONYMOUS CLASS #############
         DefaultTableModel model = new DefaultTableModel(data, columnName);
         searchCustomer = new JTable(model);
        searchCustomer.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
@@ -59,7 +59,7 @@ public class ManageCustomer extends JFrame{
                 String message = ( fname + " " + lname);
                
          
-               Object[] options = {"Update Customer ", "Create Rental", " Return Rental"};
+               Object[] options = {"Update Customer ", "Create Rental", "Manage Rental"};
 int n = JOptionPane.showOptionDialog(null,
     "Update " + message + " info",
     "Select an option for the user",
@@ -82,6 +82,12 @@ else if (n==0){
 }
 else if (n==2){
     
+    //create a try catch in case person has no 
+    Model myModel = new Model();
+    ResultSet rs = myModel.showRental(loyalty_number);
+
+    ManageRental manageRental = new ManageRental();
+    manageRental.viewRentals(rs);
     
 }
             

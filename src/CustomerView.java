@@ -63,8 +63,7 @@ public class CustomerView extends JFrame{
                Model myModel = new Model();
                ResultSet rs = myModel.showCustomers();
                
-            //customerView.setComplaint(rs);
-            
+           
              ManageCustomer viewCustomer = new ManageCustomer();
            viewCustomer.viewCustomers(rs);
                

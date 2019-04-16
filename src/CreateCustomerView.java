@@ -2,11 +2,14 @@
 import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -14,17 +17,18 @@ import javax.swing.JTextField;
  *
  * @author JadyMartins
  */
-public class CreateCustomerView extends JFrame{
+public class CreateCustomerView extends JFrame {
     
     //JDialog form;
     private JTextField tfFname;
     private JTextField tfLname;
     private JTextField tfCard;
-    private JComboBox<String> subscriptionType;
+    private static JComboBox<String> subscriptionType;
     private String[] subscription = new String[]{ "TV Lover", "Music Lover", "Premium", "Movie Lover"};
     JDialog frame;
        HomeView homeView;
        boolean isUpdate;
+       JOptionPane j;
        
     public CreateCustomerView(){
         
@@ -37,6 +41,10 @@ public class CreateCustomerView extends JFrame{
     
     //Populate JTextField with getters
     
+    
+    
+     
+     
     public void addCustomer(){
             
         //Panel for form 
@@ -106,7 +114,23 @@ public class CreateCustomerView extends JFrame{
         fgbc.gridy = 5; // row 6
         fgbc.gridwidth = 3; //3 cell
         form.add(bsubmit, fgbc);
-        //Setting button ActionCommand - true if Customer/false if Service Provider
+        bsubmit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+                CreateCustomerController createCustomerController = new           CreateCustomerController();
+                createCustomerController.getClass();
+                
+                
+                   JOptionPane.showMessageDialog(null, "Form submitted");
+                  homeView.frame.setVisible(false);
+                   
+                          
+            
+            }
+        });
+
+//Setting button ActionCommand - true if Customer/false if Service Provider
        // bsubmit.setActionCommand(String.valueOf(isCustomer));
        // bsubmit.addActionListener(myRegController);
      
@@ -115,6 +139,9 @@ public class CreateCustomerView extends JFrame{
     
     
     
-    
-    
+     public String getSubscriptionType() {
+        return String.valueOf(subscriptionType.getSelectedItem());
+    }
+
+   
 }

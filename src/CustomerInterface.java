@@ -1,3 +1,6 @@
+
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,10 +11,11 @@
  *
  * @author JadyMartins
  */
-public class ReturnRental {
+public interface CustomerInterface {
     
-    public ReturnRental(){
-        
-    }
+    
+     public JOptionPane getItem(String title);
+    // JOptionPane.showMessageDialog(this, "You are registered! Login to check your details");
+
     
 }

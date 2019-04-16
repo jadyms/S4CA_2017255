@@ -58,6 +58,19 @@ public class Model {
 		return rs;	
              
     }
+     
+      public ResultSet showRental(String id) {   
+         
+        String query = "SELECT * FROM rental WHERE loyalty_number = '" + id + "';";
+       // String query ="SELECT * FROM '" + titleType + "';";
+        
+            
+        rs = newdb.newQuery(query);
+        
+ 
+		return rs;	
+             
+    }
 /*
     //get email and password from login session
     public boolean customerLogin(String email, String password) {
