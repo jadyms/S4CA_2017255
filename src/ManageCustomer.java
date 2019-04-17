@@ -79,7 +79,7 @@ int n = JOptionPane.showOptionDialog(null,
 if (n == 1){
     
     CreateRentalView createRental = new CreateRentalView();
-    createRental.createRental(loyalty_number);
+    createRental.createRental(fname, lname, hold, loyalty_number, subscription);
     
     }
 

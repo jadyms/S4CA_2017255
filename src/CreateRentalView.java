@@ -23,10 +23,10 @@ import javax.swing.JTextField;
  */
 public class CreateRentalView extends JFrame {
     
-     private JLabel tfID;
-    private JTextField tfMedia;
-    private JTextField tfYear;
-       private JTextField tfRent;
+     private JLabel tfFname;
+    private JLabel tfLname;
+    private JLabel tfHold;
+       private JLabel tfLoyaltyCard;
         private JTextField tfTitle;
          private JTextField tfCard;
           private JLabel type;
@@ -45,8 +45,8 @@ public class CreateRentalView extends JFrame {
     }
     
     //Create a rental
-    public void createRental(String loyalty_number){
-        System.out.println("User " + loyalty_number + "wants to rent");
+    public void createRental(String setfname, String setlname, String sethold, String setloyalty_number, String setsubscription){
+
         
           JPanel form = new JPanel(new GridBagLayout());
       
@@ -95,32 +95,32 @@ public class CreateRentalView extends JFrame {
         form.add(lnumber, fgbc);
 
         //Form textfield       
-        tfID = new JLabel(name);
+        tfFname = new JLabel(setfname);
         fgbc.gridx = 1; //middle column
         fgbc.gridy = 0; //top row
         fgbc.gridwidth = 3; //3 cell
-        form.add(tfID, fgbc);
+        form.add(tfFname, fgbc);
 
-        tfMedia = new JTextField(25);
+        tfLname = new JLabel(setlname);
         fgbc.gridx = 1; //middle column
         fgbc.gridy = 1; // row 1
         fgbc.gridwidth = 3; //3 cell
-        form.add(tfMedia, fgbc);
+        form.add(tfLname, fgbc);
 
-        tfYear = new JTextField(25);
+        tfHold = new JLabel(sethold);
         fgbc.gridx = 1; //middle column
         fgbc.gridy = 2; // row 2
         fgbc.gridwidth = 3; //3 cell
-        form.add(tfYear, fgbc);
+        form.add(tfHold, fgbc);
 
-         tfRent = new JTextField(25);
+         tfLoyaltyCard = new JLabel("Add how many titles user can rent");
         fgbc.gridx = 1; //middle column
         fgbc.gridy = 3; // row 3
         fgbc.gridwidth = 3; //3 cell
-        form.add(tfRent, fgbc);
+        form.add(tfLoyaltyCard, fgbc);
        // subscriptionType.setVisible(isCustomer);
        
-       type = new JLabel("type");
+       type = new JLabel(setsubscription);
         fgbc.gridx = 1; //middle column
         fgbc.gridy = 4; // row 3
         fgbc.gridwidth = 3; //3 cell
@@ -128,7 +128,7 @@ public class CreateRentalView extends JFrame {
        // subscriptionType.setVisible(isCustomer);
        
        
-        ltype = new JLabel(loyalty_number);
+        ltype = new JLabel(setloyalty_number);
         fgbc.gridx = 1; //middle column
         fgbc.gridy = 5; // row 3
         fgbc.gridwidth = 3; //3 cell
