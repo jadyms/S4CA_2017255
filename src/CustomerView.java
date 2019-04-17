@@ -50,7 +50,7 @@ public class CustomerView extends JFrame{
        
                System.out.println("Call Add customer Class");
                CreateCustomerView createCustomer = new CreateCustomerView();
-               createCustomer.addCustomer();
+               createCustomer.addCustomer("", "", "", "");
                
            }});
        

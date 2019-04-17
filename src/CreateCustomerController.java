@@ -20,9 +20,26 @@ public class CreateCustomerController {
    subscription = createCustomerView.getSubscriptionType();
    
         System.out.println(subscription);
+        
+     //   String status = null;
+        Subscription m;
+        m = Subscription.MUSIC_LOVER;
+        
+        switch(m){
+            case MUSIC_LOVER:
+                int z = 2;
+                String x = "music";
+                String y = "tv";            
+                break;
+                
+            
+        }
+        
+        
+            
+        }
+        
+        
     
-        
-        
-    }
     
 }

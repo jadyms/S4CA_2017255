@@ -24,7 +24,7 @@ public class CreateCustomerView extends JFrame {
     private JTextField tfLname;
     private JTextField tfCard;
     private static JComboBox<String> subscriptionType;
-    private String[] subscription = new String[]{ "TV Lover", "Music Lover", "Premium", "Movie Lover"};
+    private String[] subscription = new String[]{ "TV_LOVER", "MUSIC_LOVER", "PREMIUM", "MOVIE_LOVER"};
     JDialog frame;
        HomeView homeView;
        boolean isUpdate;
@@ -45,7 +45,7 @@ public class CreateCustomerView extends JFrame {
     
      
      
-    public void addCustomer(){
+    public void addCustomer(String setfname, String setlname, String setsubscription, String setcard ){
             
         //Panel for form 
         JPanel form = new JPanel(new GridBagLayout());
@@ -87,18 +87,21 @@ public class CreateCustomerView extends JFrame {
         fgbc.gridy = 0; //top row
         fgbc.gridwidth = 3; //3 cell
         form.add(tfFname, fgbc);
+        tfFname.setText(setfname);
 
         tfLname = new JTextField(25);
         fgbc.gridx = 1; //middle column
         fgbc.gridy = 1; // row 1
         fgbc.gridwidth = 3; //3 cell
         form.add(tfLname, fgbc);
+         tfLname.setText(setlname);
 
         tfCard = new JTextField(25);
         fgbc.gridx = 1; //middle column
         fgbc.gridy = 2; // row 2
         fgbc.gridwidth = 3; //3 cell
         form.add(tfCard, fgbc);
+        tfCard.setText(setcard);
 
         subscriptionType = new JComboBox<String>(subscription);
         fgbc.gridx = 1; //middle column
@@ -118,12 +121,13 @@ public class CreateCustomerView extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 
-                CreateCustomerController createCustomerController = new           CreateCustomerController();
+                CreateCustomerController createCustomerController = new CreateCustomerController();
                 createCustomerController.getClass();
                 
+                //save info on the db
                 
                    JOptionPane.showMessageDialog(null, "Form submitted");
-                  homeView.frame.setVisible(false);
+               
                    
                           
             
@@ -143,5 +147,17 @@ public class CreateCustomerView extends JFrame {
         return String.valueOf(subscriptionType.getSelectedItem());
     }
 
+      public String getFirstName() {
+        return tfFname.getText();
+    }
    
+      public String getLastName() {
+        return tfLname.getText();
+    }
+      
+      public String getCard() {
+        return tfCard.getText();
+    }
+      
 }
+

@@ -20,6 +20,13 @@ public class ManageCustomer extends JFrame{
     
     private String[][] data = new String[10][6];
     static JTable searchCustomer;
+    String card;
+    String fname;
+                String lname ;
+                String subscription;
+                String loyalty_number;
+                String hold;
+    
        HomeView homeView;
     
     public void viewCustomers(ResultSet rs) {
@@ -49,12 +56,12 @@ public class ManageCustomer extends JFrame{
             @Override
             public void valueChanged(ListSelectionEvent e) {
                 int row = searchCustomer.getSelectedRow();
-                String fname = (String) searchCustomer.getValueAt(row, 0);
-                String lname = (String) searchCustomer.getValueAt(row, 1);
-                String subscription = (String) searchCustomer.getValueAt(row, 2);
-                String card = (String) searchCustomer.getValueAt(row, 3);
-                String loyalty_number = (String) searchCustomer.getValueAt(row, 4);
-                String hold = (String) searchCustomer.getValueAt(row, 5);
+               fname = (String) searchCustomer.getValueAt(row, 0);
+                 lname = (String) searchCustomer.getValueAt(row, 1);
+            subscription = (String) searchCustomer.getValueAt(row, 2);
+                 card = (String) searchCustomer.getValueAt(row, 3);
+               loyalty_number = (String) searchCustomer.getValueAt(row, 4);
+              hold = (String) searchCustomer.getValueAt(row, 5);
                 // String message = ("Location: "+loc + "\r\n Provider: " + provider+ "\r\n Provider Email: " +pEmail+ " \r\nDate: " +fdate+ " \r\nTime: " +ftime);
                 String message = ( fname + " " + lname);
                
@@ -68,18 +75,21 @@ int n = JOptionPane.showOptionDialog(null,
     null,
     options,
     options[2]);
-
+//if create rental
 if (n == 1){
     
     CreateRentalView createRental = new CreateRentalView();
     createRental.createRental(loyalty_number);
     
     }
+
+//if update customer
 else if (n==0){
     
-    UpdateCustomerInfo updatecustomer = new UpdateCustomerInfo();
-    updatecustomer.getClass();
+    Customer updatecustomer = new Customer();
+    updatecustomer.FillCustomerForm(fname, lname, subscription, card );
 }
+//ig manage rental
 else if (n==2){
     
     //create a try catch in case person has no 
