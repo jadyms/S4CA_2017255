@@ -24,7 +24,7 @@ public class CreateCustomerView extends JFrame {
     private JTextField tfLname;
     private JTextField tfCard;
     private static JComboBox<String> subscriptionType;
-    private String[] subscription = new String[]{ "TV_LOVER", "MUSIC_LOVER", "PREMIUM", "MOVIE_LOVER"};
+    private String[] subscription = new String[]{ "TV_LOVER", "MUSIC_LOVER", "PREMIUM", "VIDEO_LOVER"};
     JDialog frame;
        HomeView homeView;
        boolean isUpdate;
@@ -121,9 +121,25 @@ public class CreateCustomerView extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 
-                CreateCustomerController createCustomerController = new CreateCustomerController();
-                createCustomerController.getClass();
                 
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                //creating a instance of customer class
+                Customer newCustomer = new Customer(getFirstName(), getLastName(), getCard(), getSubscriptionType());
+                /*CreateCustomerController createCustomerController = new CreateCustomerController();
+                createCustomerController.getClass();
+                */
                 //save info on the db
                 
                    JOptionPane.showMessageDialog(null, "Form submitted");

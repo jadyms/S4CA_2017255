@@ -1,4 +1,5 @@
 
+import java.awt.CardLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.sql.ResultSet;
@@ -43,6 +44,9 @@ public class CreateTitleView extends JFrame {
     HomeView homeView;
     private String[][] data = new String[50][3];
     static JTable searchTitles;
+    static JPanel myPanel;
+     static JPanel myPanel2;
+    
        
     public CreateTitleView(){
       
@@ -181,7 +185,7 @@ public class CreateTitleView extends JFrame {
         searchTitles.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 
         //Panel with appointmnets information
-        JPanel myPanel = new JPanel();
+        myPanel = new JPanel();
         //To be displayed on the Top Panel
         String message = "View bookings";
         //Label of Button 1 and Button 2
@@ -194,4 +198,47 @@ public class CreateTitleView extends JFrame {
 
     }
     
+     public JPanel showTitles(ResultSet rs) {
+        String[] columnName = {"ID", "Media", "Year"};
+        try {
+            int i = 0;
+            while (rs.next()) {
+
+                data[i][0] = rs.getString("id");
+                data[i][1] = rs.getString("media_type");
+                data[i][2] = rs.getString("year");
+               // data[i][3] = rs.getString("aptStatus");
+               // data[i][4] = rs.getString("cEmail");
+                i++;
+            }
+        } catch (SQLException se) {
+            System.out.println("SQL Exception:");
+
+        }
+
+
+        DefaultTableModel model = new DefaultTableModel(data, columnName);
+        searchTitles = new JTable(model);
+       // searchTitles.getSelectionModel().addListSelectionListener(cController);
+
+        JScrollPane sp = new JScrollPane(searchTitles, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        searchTitles.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        searchTitles.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+
+        //Panel with appointmnets information
+        myPanel2 = new JPanel();
+        //To be displayed on the Top Panel
+        String message = "View bookings";
+        //Label of Button 1 and Button 2
+        String b1 = ("Cancel Appointment");
+        String b2 = ("Logout");
+        //Add elements to the panel
+        myPanel2.add(sp);
+        //Populating main Panel with appointment data
+      // homeView = new HomeView("Search titles", myPanel, "Logout");
+
+      return myPanel2;
+    }
+    
+     
 }

@@ -5,6 +5,8 @@ public enum Subscription {
     VIDEO_LOVER,
     PREMIUM;
   }
+
+
 /*
   
    switch(Subscription){

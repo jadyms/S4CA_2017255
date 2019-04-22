@@ -16,6 +16,8 @@ public class CreateCustomerController {
     
     public CreateCustomerController(){
         
+        
+        
     CreateCustomerView createCustomerView = new CreateCustomerView();
    subscription = createCustomerView.getSubscriptionType();
    

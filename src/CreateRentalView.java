@@ -1,4 +1,5 @@
 
+import java.awt.CardLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
@@ -31,7 +32,7 @@ public class CreateRentalView extends JFrame {
          private JTextField tfCard;
           private JLabel type;
           
-          String name = "Jady";
+          
    // private JComboBox<String> type;
     private String[] subscription = new String[]{ "TV Lover", "Music Lover", "Premium", "Movie Lover"};
     //String titleType;
@@ -48,7 +49,10 @@ public class CreateRentalView extends JFrame {
     public void createRental(String setfname, String setlname, String sethold, String setloyalty_number, String setsubscription){
 
         
+         JPanel parent = new JPanel();
+             JPanel card = new JPanel();
           JPanel form = new JPanel(new GridBagLayout());
+     
       
          
         //Setting Layout
@@ -148,24 +152,23 @@ public class CreateRentalView extends JFrame {
         bsubmit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-            
-                Model myModel = new Model();
-               ResultSet rs = myModel.showTitles("movies");
-               
-            CreateTitleView createTitle = new CreateTitleView();
-           createTitle.showMovies(rs);
-           
+                
+                      
+           RentalCardLayout rc = new RentalCardLayout();
+           rc.showRental();
+         
            //create button to selecionar o filme escolhido
            //display filme escolhido [
           //button para criar rental
           //add points to membership card
-             
-             
-            }
-        });
-     
+                   
        
-       homeView = new HomeView("Rent Title ", form, "Logout");
+              
+            }
+        }
+        );
+     
+
       //   homeView = new HomeView("Rent Title ", myPanel, "Logout");
          
          
@@ -174,7 +177,7 @@ public class CreateRentalView extends JFrame {
    
          
          
-         
+         homeView = new HomeView("Rent Title ", form, "Logout"); 
          
     }
         

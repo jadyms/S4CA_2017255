@@ -17,8 +17,7 @@ public class Customer {
     String lname;
     String card;
     String subscription;
-    ArrayList<Customer> customers;
-     CreateCustomerView updateCustomer; 
+    CreateCustomerView updateCustomer; 
    
      public Customer(){
          
@@ -29,22 +28,67 @@ public class Customer {
         this.lname = lname;
         this.card = card;
         this.subscription = subscription;
-    }
-    /*
-    
-    public Customer(){
-         updateCustomer = new CreateCustomerView();
-        this.fname = updateCustomer.getFirstName();
-        this.lname = updateCustomer.getLastName();
-        this.card = updateCustomer.getCard();
-        this.subscription = updateCustomer.getSubscriptionType();
-    }
-    */
-    public ArrayList<Customer> customerList(){
         
-        //customers.add(fname, lname, card, subscription);
-        return customers;
+        System.out.println(fname + lname+ card+ subscription);
+        setSubscription(Subscription.valueOf(subscription.toUpperCase()));
     }
+    
+    public String setSubscription(Subscription s){
+   
+        
+        
+       if(null != s) switch (s) {
+            case MUSIC_LOVER:
+                System.out.println(" \"Music Lover :-)\"");
+            case PREMIUM:
+                 System.out.println(" \"Premium :-)\"");
+            case TV_LOVER:
+                System.out.println(" \"TV Lover :-)\"");
+            case VIDEO_LOVER:
+               System.out.println(" \"Video Lover :-)\"");
+            default:
+                break;
+        }
+        return null;
+    }
+    
+       
+       
+       /*
+
+        Subscription s  ;
+  
+    if(subscription.equals(Subscription.MUSIC_LOVER.toString())){
+        System.out.println("This user can rent Concerts and Music");
+        
+}else if (subscription.equals(Subscription.PREMIUM.toString())){
+        System.out.println("This user can rent anything");
+        
+    
+}else if (subscription.equals(Subscription.TV_LOVER.toString())){
+        System.out.println("This user can rent Box Sets ");
+        
+    
+}else if (subscription == Subscription.VIDEO_LOVER.toString()){
+        System.out.println("This user can rent Movies");
+        
+    
+}
+        return null;
+    */
+   
+            
+     
+    
+       
+    
+    
+         
+    
+       
+    
+    
+    
     public void FillCustomerForm(String fname, String lname, String subscription, String card ){
         
         //get user info from the db
@@ -58,7 +102,6 @@ public class Customer {
     }
     
     
-    
-    
+
     
 }
