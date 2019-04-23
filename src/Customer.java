@@ -17,9 +17,18 @@ public class Customer {
     String lname;
     String card;
     String subscription;
+    String loyalty_number;
+  String hold;
     CreateCustomerView updateCustomer; 
    
-     public Customer(){
+     public Customer(String fname, String lname , String subscription, String card, String loyalty_number, String hold ){
+        this.fname = fname;
+        this.lname = lname;
+        this.subscription = subscription;
+         this.card = card;
+         this.loyalty_number = loyalty_number;
+         this.hold = hold;
+         
          
      }
     
@@ -32,71 +41,61 @@ public class Customer {
         System.out.println(fname + lname+ card+ subscription);
         setSubscription(Subscription.valueOf(subscription.toUpperCase()));
     }
+
+    Customer() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public String getFirstname(){
+        return this.fname;
+    }
+    
+    public String getLastname(){
+        return this.lname;
+    }
+    public String getCard(){
+        return this.card;
+    }
+       public String getSubscription(){
+        return this.subscription;
+    }
+       
+     public String getLoyaltyNumber(){
+        return this.loyalty_number;
+    }  
+    
+      public String getHold(){
+        return this.hold;
+    }  
     
     public String setSubscription(Subscription s){
-   
-        
-        
-       if(null != s) switch (s) {
+          if(null != s) switch (s) {
             case MUSIC_LOVER:
-                System.out.println(" \"Music Lover :-)\"");
+                System.out.println(("This user can rent Concerts and Music"));
             case PREMIUM:
-                 System.out.println(" \"Premium :-)\"");
+                 System.out.println("This user can rent anything");
             case TV_LOVER:
-                System.out.println(" \"TV Lover :-)\"");
+                System.out.println("This user can rent Box Sets ");
             case VIDEO_LOVER:
-               System.out.println(" \"Video Lover :-)\"");
+               System.out.println("This user can rent Movies");
             default:
                 break;
         }
         return null;
     }
     
-       
-       
-       /*
-
-        Subscription s  ;
-  
-    if(subscription.equals(Subscription.MUSIC_LOVER.toString())){
-        System.out.println("This user can rent Concerts and Music");
-        
-}else if (subscription.equals(Subscription.PREMIUM.toString())){
-        System.out.println("This user can rent anything");
-        
-    
-}else if (subscription.equals(Subscription.TV_LOVER.toString())){
-        System.out.println("This user can rent Box Sets ");
-        
-    
-}else if (subscription == Subscription.VIDEO_LOVER.toString()){
-        System.out.println("This user can rent Movies");
-        
-    
-}
-        return null;
-    */
-   
-            
-     
-    
-       
     
     
+       public void FillCustomerForm(String fname, String lname, String subscription, String card ){
          
-    
-       
-    
-    
-    
-    public void FillCustomerForm(String fname, String lname, String subscription, String card ){
-        
+           
         //get user info from the db
         
         //call this method passing an user as an object
       updateCustomer = new CreateCustomerView();
-        updateCustomer.addCustomer(fname, lname, subscription, card);
       
+        updateCustomer.addCustomer(fname, lname, subscription, card);
+    //  updateCustomer.setValues(fname, lname, card);
         
         
     }

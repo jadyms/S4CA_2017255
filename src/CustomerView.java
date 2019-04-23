@@ -65,8 +65,8 @@ public class CustomerView extends JFrame{
                
            
              ManageCustomer viewCustomer = new ManageCustomer();
-           viewCustomer.viewCustomers(rs);
-               
+           viewCustomer.populateTable();
+             //viewCustomer.viewCustomers(rs);
                
            }});
        

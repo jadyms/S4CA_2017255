@@ -4,6 +4,8 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
@@ -20,6 +22,11 @@ import javax.swing.JTextField;
 public class CreateCustomerView extends JFrame {
     
     //JDialog form;
+    /*private JTextField tfFname;
+    private JTextField tfLname;
+     private JTextField tfCard;
+    */
+    
     private JTextField tfFname;
     private JTextField tfLname;
     private JTextField tfCard;
@@ -122,19 +129,6 @@ public class CreateCustomerView extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 
                 
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
                 //creating a instance of customer class
                 Customer newCustomer = new Customer(getFirstName(), getLastName(), getCard(), getSubscriptionType());
                 /*CreateCustomerController createCustomerController = new CreateCustomerController();
@@ -156,9 +150,17 @@ public class CreateCustomerView extends JFrame {
      
          homeView = new HomeView("New Customer Details ", form, "Logout");
     }
-    
-    
-    
+   
+     /* 
+     Map<String, JTextField> map = new HashMap<String, JTextField>();
+ 
+     public void setValues(String fname, String lname, String card){
+         map.put(fname, tfFname);
+         map.put(lname, tfLname);
+         map.put(card, tfCard);
+     }
+     
+    */
      public String getSubscriptionType() {
         return String.valueOf(subscriptionType.getSelectedItem());
     }
