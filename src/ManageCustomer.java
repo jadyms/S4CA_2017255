@@ -97,17 +97,6 @@ public class ManageCustomer extends JFrame{
         table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 
-        //Panel with appointmnets information
-        JPanel myPanel = new JPanel();
-        //To be displayed on the Top Panel
-        String message = "View bookings";
-        //Label of Button 1 and Button 2
-        String b1 = ("Cancel Appointment");
-        String b2 = ("Logout");
-        //Add elements to the panel
-        myPanel.add(sp);
-        //Populating main Panel with appointment data
-       homeView = new HomeView("Search customer", myPanel, "Logout");
 
                
                 table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
@@ -161,6 +150,18 @@ else if (n==2){
              
        
            }});
+                
+        //Panel with appointmnets information
+        JPanel myPanel = new JPanel();
+        //To be displayed on the Top Panel
+        String message = "View bookings";
+        //Label of Button 1 and Button 2
+        String b1 = ("Cancel Appointment");
+        String b2 = ("Logout");
+        //Add elements to the panel
+        myPanel.add(sp);
+        //Populating main Panel with appointment data
+       homeView = new HomeView("Search customer", myPanel, "Logout");
                 
                 
                }
