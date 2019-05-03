@@ -50,7 +50,7 @@ public class CreateRentalView extends JFrame {
 
         
          JPanel parent = new JPanel();
-          JPanel card = new JPanel();
+      
           JPanel form = new JPanel(new GridBagLayout());
      
       
@@ -149,9 +149,22 @@ public class CreateRentalView extends JFrame {
         form.add(bsubmit, fgbc);
         //Setting button ActionCommand - true if Customer/false if Service Provider
        // bsubmit.setActionCommand(String.valueOf(isCustomer));
+       
+       
+               Model myModel = new Model();
+               ResultSet rs = myModel.showTitles();
+               
+           
+             ManageTitles manageTitles = new ManageTitles();
+           JPanel table = manageTitles.populateTable();
+       
+           parent.add(form);
+           parent.add(table);
         bsubmit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                
+        
                 
                       
            RentalCardLayout rc = new RentalCardLayout();
@@ -171,7 +184,7 @@ public class CreateRentalView extends JFrame {
 
       //   homeView = new HomeView("Rent Title ", myPanel, "Logout");
                   
-         homeView = new HomeView("Rent Title ", form, "Logout"); 
+         homeView = new HomeView("Rent Title ", parent, "Logout"); 
          
     }
         

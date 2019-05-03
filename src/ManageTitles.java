@@ -70,7 +70,7 @@ public class ManageTitles extends JFrame{
                return titles;
              
            }
-           public void populateTable(){
+           public JPanel populateTable(){
                //###### THIS CODE IN A SEPARATE METHOD #######
                table = new JTable();
                DefaultTableModel model = new DefaultTableModel();
@@ -172,9 +172,10 @@ else if (n==2){
         //Add elements to the panel
         myPanel.add(sp);
         //Populating main Panel with appointment data
-       homeView = new HomeView("Search customer", myPanel, "Logout");
+     
+        //homeView = new HomeView("Search customer", myPanel, "Logout");
                 
-                
+                return myPanel;
                }
     
     public void viewCustomers(ResultSet rs) {
