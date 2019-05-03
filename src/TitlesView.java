@@ -68,7 +68,14 @@ public class TitlesView extends JFrame{
        
        btn2.addActionListener(new ActionListener(){
            public void actionPerformed(ActionEvent e) {
-       
+               
+                 Model myModel = new Model();
+               ResultSet rs = myModel.showTitles();
+               
+           
+             ManageTitles manageTitles = new ManageTitles();
+           manageTitles.populateTable();
+       /*
                System.out.println("Call Manage Titles Class");
                
                String[] possibilities = {"movies", "Live Concert", "Music", "Box Set"};
@@ -84,7 +91,7 @@ public class TitlesView extends JFrame{
             
               CreateTitleView createTitle = new CreateTitleView();
            createTitle.showMovies(rs);
-               
+         */      
                
            }});
        

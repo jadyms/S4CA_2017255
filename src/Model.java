@@ -18,11 +18,26 @@ public class Model {
   newdb = new db();
     }
     
+    public ResultSet showTitles() {
+        
+        String query = "SELECT * FROM titles;";
+        //  String query = "SELECT * FROM movies;";
+       // String query ="SELECT * FROM '" + titleType + "';";
+        
+            
+        rs = newdb.newQuery(query);
+        
+ 
+		return rs;	
+             
+    }
+    
     public ResultSet showTitles(String titleType) {
 
    
          
         String query = "SELECT * FROM movies;";
+        //  String query = "SELECT * FROM movies;";
        // String query ="SELECT * FROM '" + titleType + "';";
         
             

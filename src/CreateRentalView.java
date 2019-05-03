@@ -50,7 +50,7 @@ public class CreateRentalView extends JFrame {
 
         
          JPanel parent = new JPanel();
-             JPanel card = new JPanel();
+          JPanel card = new JPanel();
           JPanel form = new JPanel(new GridBagLayout());
      
       
@@ -170,13 +170,7 @@ public class CreateRentalView extends JFrame {
      
 
       //   homeView = new HomeView("Rent Title ", myPanel, "Logout");
-         
-         
-         
-         
-   
-         
-         
+                  
          homeView = new HomeView("Rent Title ", form, "Logout"); 
          
     }
