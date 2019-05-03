@@ -28,7 +28,10 @@ public class RentalCardLayout extends JFrame implements ActionListener{
   
     JPanel parent;
     
-    public RentalCardLayout(){};
+    public RentalCardLayout(){
+        
+    }
+    
     public void showRental(){
     
         
@@ -66,7 +69,9 @@ public class RentalCardLayout extends JFrame implements ActionListener{
          
          frame.add(mv);    
          frame.add(ms);
-         parent.add(movies, "movies");
+         
+         //parent.add(movies, "movies");
+         frame.add(movies, "movies");
          parent.add(music, "music");
    
         frame.add(parent);
