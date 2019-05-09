@@ -74,14 +74,17 @@ public class HomeView extends JFrame {
                 //Create a rent for selected customer
                 //Update customer information
                 //Manage an existing customer rental
-                CustomerView customer = new CustomerView();
-                customer.AddOrManageCustomer();
+                DefaultPanel customer = new DefaultPanel();
+                customer.TwoButtonPanel("Customer","Add Customer", "Manage existing customer");
             }
         });
 
         btn2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 //To manage titles options
+                
+                // DefaultPanel customer = new DefaultPanel();
+                //customer.TwoButtonPanel("Titles","Add Title", "Manage existing title");
                 TitlesView titles = new TitlesView();
                 titles.TitlesPanel();
             }

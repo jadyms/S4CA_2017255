@@ -8,7 +8,7 @@ import java.sql.Statement;
 public class db {
 
     String[][] data = new String[50][4];
-    CustomerView customerView;
+    DefaultPanel customerView;
     Connection conn = null;
     Statement stmt = null;
     ResultSet rs = null;
