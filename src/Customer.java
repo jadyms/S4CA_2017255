@@ -6,7 +6,7 @@ public class Customer {
     String subscription;
     String loyalty_number;
   String hold;
-    CreateCustomerView updateCustomer; 
+    CustomerView updateCustomer; 
    
      public Customer(String fname, String lname , String subscription, String card, String loyalty_number, String hold ){
         this.fname = fname;
@@ -78,7 +78,7 @@ public class Customer {
         //get user info from the db
         
         //call this method passing an user as an object
-      updateCustomer = new CreateCustomerView();
+      updateCustomer = new CustomerView();
       
         updateCustomer.addCustomer(fname, lname, subscription, card);
     //  updateCustomer.setValues(fname, lname, card);

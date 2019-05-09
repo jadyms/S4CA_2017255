@@ -83,10 +83,10 @@ public class HomeView extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 //To manage titles options
                 
-                // DefaultPanel customer = new DefaultPanel();
-                //customer.TwoButtonPanel("Titles","Add Title", "Manage existing title");
-                TitlesView titles = new TitlesView();
-                titles.TitlesPanel();
+                DefaultPanel customer = new DefaultPanel();
+                customer.TwoButtonPanel("Titles","Add Title", "Manage existing title");
+                //TitlesView titles = new TitlesView();
+                //titles.TitlesPanel();
             }
         });
 

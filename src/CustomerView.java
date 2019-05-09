@@ -19,25 +19,21 @@ import javax.swing.JTextField;
  *
  * @author JadyMartins
  */
-public class CreateCustomerView extends JFrame {
-    
-    //JDialog form;
-    /*private JTextField tfFname;
-    private JTextField tfLname;
-     private JTextField tfCard;
-    */
-    
-    private JTextField tfFname;
-    private JTextField tfLname;
-    private JTextField tfCard;
+public class CustomerView extends JFrame {
+
+    private static JTextField tfFname;
+    private static JTextField tfLname;
+    private static JTextField tfCard;
     private static JComboBox<String> subscriptionType;
-    private String[] subscription = new String[]{ "TV_LOVER", "MUSIC_LOVER", "PREMIUM", "VIDEO_LOVER"};
+    // DELETE private String[] subscription = new String[]{"TV_LOVER", "MUSIC_LOVER", "PREMIUM", "VIDEO_LOVER"};
     JDialog frame;
-       HomeView homeView;
-       boolean isUpdate;
-       JOptionPane j;
-       
-    public CreateCustomerView(){
+    HomeView homeView;
+    boolean isUpdate;
+    JOptionPane j;
+    Subscription subs; //Enum Class
+
+    CustomerController customerController;
+    public CustomerView(){
         
     }
     
@@ -51,13 +47,14 @@ public class CreateCustomerView extends JFrame {
     
     
      
-     
+    //Form to get Customer details
+    //JTextField set as "" when adding a new customer
+    //JTextField set with user details when Updating Customer
     public void addCustomer(String setfname, String setlname, String setsubscription, String setcard ){
             
         //Panel for form 
         JPanel form = new JPanel(new GridBagLayout());
       
-         
         //Setting Layout
         GridBagConstraints fgbc = new GridBagConstraints();
         fgbc.fill = GridBagConstraints.HORIZONTAL;
@@ -80,7 +77,6 @@ public class CreateCustomerView extends JFrame {
         fgbc.gridy = 2; // row 2
         fgbc.gridwidth = 1; //1 cell
         form.add(lcardNumber, fgbc);
-
         
         JLabel lsubscription = new JLabel("Subscription: ");
         fgbc.gridx = 0; //leftmost column
@@ -110,20 +106,24 @@ public class CreateCustomerView extends JFrame {
         form.add(tfCard, fgbc);
         tfCard.setText(setcard);
 
-        subscriptionType = new JComboBox<String>(subscription);
+        subscriptionType = new JComboBox(subs.values());
         fgbc.gridx = 1; //middle column
         fgbc.gridy = 3; // row 3
         fgbc.gridwidth = 3; //3 cell
         form.add(subscriptionType, fgbc);
-       // subscriptionType.setVisible(isCustomer);
-
-
+  
         //Button
         JButton bsubmit = new JButton("Submit");
         fgbc.gridx = 1; //middle column
         fgbc.gridy = 5; // row 6
         fgbc.gridwidth = 3; //3 cell
         form.add(bsubmit, fgbc);
+        
+        //ActionEvents
+        bsubmit.setActionCommand("addCustomerDetails");
+        customerController = new CustomerController();
+        bsubmit.addActionListener(customerController);
+        /*
         bsubmit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -133,7 +133,7 @@ public class CreateCustomerView extends JFrame {
                 Customer newCustomer = new Customer(getFirstName(), getLastName(), getCard(), getSubscriptionType());
                 /*CreateCustomerController createCustomerController = new CreateCustomerController();
                 createCustomerController.getClass();
-                */
+                
                 //save info on the db
                 
                    JOptionPane.showMessageDialog(null, "Form submitted");
@@ -147,7 +147,7 @@ public class CreateCustomerView extends JFrame {
 //Setting button ActionCommand - true if Customer/false if Service Provider
        // bsubmit.setActionCommand(String.valueOf(isCustomer));
        // bsubmit.addActionListener(myRegController);
-     
+     */
          homeView = new HomeView("New Customer Details ", form, "Logout", "Go back");
     }
    
