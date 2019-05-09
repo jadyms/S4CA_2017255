@@ -32,11 +32,12 @@ public class Model {
              
     }
     
-    public ResultSet showTitles(String titleType) {
+    public ResultSet showTitles(String subscriptionQuery) {
 
    
          
-        String query = "SELECT * FROM movies;";
+        String query = subscriptionQuery;
+        
         //  String query = "SELECT * FROM movies;";
        // String query ="SELECT * FROM '" + titleType + "';";
         

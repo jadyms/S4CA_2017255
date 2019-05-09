@@ -189,19 +189,19 @@ else if (n==2){
         //############# USING ANONYMOUS CLASS #############
         DefaultTableModel model = new DefaultTableModel(data, columnName);
         searchCustomer = new JTable(model);
-       searchCustomer.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+        searchCustomer.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
                 int row = searchCustomer.getSelectedRow();
-               fname = (String) searchCustomer.getValueAt(row, 0);
-                 lname = (String) searchCustomer.getValueAt(row, 1);
-            subscription = (String) searchCustomer.getValueAt(row, 2);
-                 card = (String) searchCustomer.getValueAt(row, 3);
-               loyalty_number = (String) searchCustomer.getValueAt(row, 4);
-              hold = (String) searchCustomer.getValueAt(row, 5);
+                fname = (String) searchCustomer.getValueAt(row, 0);
+                lname = (String) searchCustomer.getValueAt(row, 1);
+                subscription = (String) searchCustomer.getValueAt(row, 2);
+                card = (String) searchCustomer.getValueAt(row, 3);
+                loyalty_number = (String) searchCustomer.getValueAt(row, 4);
+                hold = (String) searchCustomer.getValueAt(row, 5);
                 // String message = ("Location: "+loc + "\r\n Provider: " + provider+ "\r\n Provider Email: " +pEmail+ " \r\nDate: " +fdate+ " \r\nTime: " +ftime);
-                String message = ( fname + " " + lname);
-               
+                String message = (fname + " " + lname);
+         
          
                Object[] options = {"Update Customer ", "Create Rental", "Manage Rental"};
 int n = JOptionPane.showOptionDialog(null,

@@ -183,6 +183,8 @@ public class CreateTitleView extends JFrame {
         JScrollPane sp = new JScrollPane(searchTitles, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         searchTitles.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         searchTitles.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+        
+        
 
         //Panel with appointmnets information
         myPanel = new JPanel();

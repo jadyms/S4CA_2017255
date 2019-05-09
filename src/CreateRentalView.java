@@ -138,39 +138,37 @@ public class CreateRentalView extends JFrame {
         fgbc.gridwidth = 3; //3 cell
         form.add(ltype, fgbc);
        // subscriptionType.setVisible(isCustomer);
-       
-       
+   
 
         //Button
-        JButton bsubmit = new JButton("Show available titles for selected type");
-        fgbc.gridx = 1; //middle column
-        fgbc.gridy = 6; // row 6
-        fgbc.gridwidth = 3; //3 cell
-        form.add(bsubmit, fgbc);
+        JButton bsubmit = new JButton("Rent");
+        //fgbc.gridx = 1; //middle column
+        //fgbc.gridy = 6; // row 6
+        //fgbc.gridwidth = 3; //3 cell
+   
         //Setting button ActionCommand - true if Customer/false if Service Provider
        // bsubmit.setActionCommand(String.valueOf(isCustomer));
        
        
-               Model myModel = new Model();
-               ResultSet rs = myModel.showTitles();
-               
-           
-             ManageTitles manageTitles = new ManageTitles();
-           JPanel table = manageTitles.populateTable();
-       
-           parent.add(form);
-           parent.add(table);
+              Model myModel = new Model();
+        Subscription subscription = Subscription.valueOf(setsubscription);
+        // ResultSet rs = myModel.showTitles(subscription.getSubscriptonQuery());
+
+        ManageTitles manageTitles = new ManageTitles();
+
+        JPanel table = manageTitles.populateTable();
+        table.add(bsubmit);
+        parent.add(form);
+        parent.add(table);
+
         bsubmit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+     
                 
-        
-                
-                      
-           RentalCardLayout rc = new RentalCardLayout();
-           rc.showRental();
          
-           //create button to selecionar o filme escolhido
+           
            //display filme escolhido [
           //button para criar rental
           //add points to membership card

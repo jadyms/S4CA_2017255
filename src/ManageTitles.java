@@ -1,9 +1,11 @@
 
+import java.awt.Frame;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -37,11 +39,15 @@ public class ManageTitles extends JFrame{
     String rate;
     String additional;
     HomeView homeView;
+    
         
            
            public static ArrayList<Titles> getTitles(){
                
                 ArrayList<Titles> titles = new ArrayList<Titles>();
+        
+             
+               
                Titles t;
               
                try{
@@ -70,6 +76,7 @@ public class ManageTitles extends JFrame{
                return titles;
              
            }
+           
            public JPanel populateTable(){
                //###### THIS CODE IN A SEPARATE METHOD #######
                table = new JTable();
@@ -85,9 +92,12 @@ public class ManageTitles extends JFrame{
                
                model.setColumnIdentifiers(columnsName);
                Object[] rowData = new Object[7];
+               System.out.println(getTitles().get(2).getTitleType());
+               
                
                for(int i = 0; i < getTitles().size(); i++){
                
+                          
                    rowData[0] = getTitles().get(i).getTitleID();
                    rowData[1] = getTitles().get(i).getTitle();
                    rowData[2] = getTitles().get(i).getTitleType(); 
@@ -96,53 +106,52 @@ public class ManageTitles extends JFrame{
                    rowData[5] = getTitles().get(i).getRate(); 
                    rowData[6] = getTitles().get(i).getAdditional();    
                    model.addRow(rowData);
-                
-                   
                }
-               
+                   
                table.setModel(model);
                JScrollPane sp = new JScrollPane(table, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-        table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+               table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+               table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+               table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+                   private Frame owner;
 
+                   @Override
+                   public void valueChanged(ListSelectionEvent e) {
+                       int row = table.getSelectedRow();
+                       title = (String) table.getValueAt(row, 0);
+                       titleType = (String) table.getValueAt(row, 1);
+                       mediaType = (String) table.getValueAt(row, 2);
+                       titleID = (String) table.getValueAt(row, 3);
+                       year = (String) table.getValueAt(row, 4);
+                       rate = (String) table.getValueAt(row, 5);
+                       additional = (String) table.getValueAt(row, 6);
+                       // String message = ("Location: "+loc + "\r\n Provider: " + provider+ "\r\n Provider Email: " +pEmail+ " \r\nDate: " +fdate+ " \r\nTime: " +ftime);
 
-               
-                table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-      
-               @Override
-            public void valueChanged(ListSelectionEvent e) {
-                int row = table.getSelectedRow();
-               title = (String) table.getValueAt(row, 0);
-                 titleType = (String) table.getValueAt(row, 1);
-            mediaType = (String) table.getValueAt(row, 2);
-                 titleID = (String) table.getValueAt(row, 3);
-               year = (String) table.getValueAt(row, 4);
-              rate = (String) table.getValueAt(row, 5);
-                 additional = (String) table.getValueAt(row, 6);
-                // String message = ("Location: "+loc + "\r\n Provider: " + provider+ "\r\n Provider Email: " +pEmail+ " \r\nDate: " +fdate+ " \r\nTime: " +ftime);
-                
-                String message = ( title + " " + titleType);
- /*               
-                Object[] options = {"Update Customer ", "Create Rental", "Manage Rental"};
+                       String message = (title + " " + titleType+ " " + mediaType + " " + titleID+ " " + year + " " + rate + " " + additional);
+                          
+                       
+                       
+                Object[] options = { "Rent", "Choose another title"};
 int n = JOptionPane.showOptionDialog(null,
-    "Update " + message + " info",
-    "Select an option for the user",
-    JOptionPane.YES_NO_CANCEL_OPTION,
+    "Rent " + message ,
+    "Confirm your rental",
+    JOptionPane.OK_CANCEL_OPTION,
     JOptionPane.QUESTION_MESSAGE,
     null,
     options,
-    options[2]);
+    options[1]);
+
+
 //if create rental
-if (n == 1){
+if (n == 0){
     
-    CreateRentalView createRental = new CreateRentalView();
-    createRental.createRental(title, titleType, rate, year, mediaType);
+    System.out.println("Rent ok");
     
     }
-
+/*
 //if update customer
 else if (n==0){
-    
+        
     Customer updatecustomer = new Customer();
     updatecustomer.FillCustomerForm(title, titleType, mediaType, titleID );
 }
@@ -160,7 +169,7 @@ else if (n==2){
                
              
    */    
-           }});
+           }   });
                 
         //Panel with appointmnets information
         JPanel myPanel = new JPanel();
