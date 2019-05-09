@@ -69,7 +69,7 @@ public class ManageRental {
         //Add elements to the panel
         myPanel.add(sp);
         //Populating main Panel with appointment data
-       homeView = new HomeView("Search titles", myPanel, "Logout");
+       homeView = new HomeView("Search titles", myPanel, "Logout", "Go back");
         
         
         

@@ -148,7 +148,7 @@ public class CreateCustomerView extends JFrame {
        // bsubmit.setActionCommand(String.valueOf(isCustomer));
        // bsubmit.addActionListener(myRegController);
      
-         homeView = new HomeView("New Customer Details ", form, "Logout");
+         homeView = new HomeView("New Customer Details ", form, "Logout", "Go back");
     }
    
      /* 

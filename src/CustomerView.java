@@ -9,27 +9,23 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-/**
- *
- * @author JadyMartins
- * Use of Anonymous Action Listener
- */
 public class CustomerView extends JFrame{
-    
-    HomeView homeView;
-         
+    //Declaring Home View class 
+    //to use the Main Panel method 
+    //that cointains the main frame of the application
+      HomeView homeView; 
         
     public CustomerView(){
               
     }
     
-    public void AddNewCustomerPanel(){
+    public void AddOrManageCustomer(){
       
+        //Add new customer or manage existing one
         JPanel myPanel2 = new JPanel();
          String b1 = "Add Customer";
          String b2 = "Manage Existing Customer";
-        // String b3 = "Manage Rental"; 
-         //String b4 = "Loyalty Card";
+       
         //Panel 2 for buttons
       
         //Buttons for Panel 2
@@ -83,7 +79,7 @@ public class CustomerView extends JFrame{
         GridLayout mgr = new GridLayout(1,2);
         myPanel2.setLayout(mgr);
     
-        homeView = new HomeView("Select an option", myPanel2, "Logout");
+        homeView = new HomeView("Select an option", myPanel2, "Logout", "Go back");
      
       // homeView.mainPanel("Select an option", myPanel2, "Logout");
                //homeView.HomePanel("Select an option", myPanel2, "Logout");

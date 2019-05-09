@@ -153,7 +153,7 @@ public class CreateTitleView extends JFrame {
        // bsubmit.setActionCommand(String.valueOf(isCustomer));
        // bsubmit.addActionListener(myRegController);
      
-         homeView = new HomeView("New Title Details ", form, "Logout");
+         homeView = new HomeView("New Title Details ", form, "Logout", "Go back");
     }
 
    
@@ -196,7 +196,7 @@ public class CreateTitleView extends JFrame {
         //Add elements to the panel
         myPanel.add(sp);
         //Populating main Panel with appointment data
-       homeView = new HomeView("Search titles", myPanel, "Logout");
+       homeView = new HomeView("Search titles", myPanel, "Logout", "Go back");
 
     }
     

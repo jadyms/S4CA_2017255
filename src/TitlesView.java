@@ -108,7 +108,7 @@ public class TitlesView extends JFrame{
         GridLayout mgr = new GridLayout(1,2);
         myPanel2.setLayout(mgr);
     
-        homeView = new HomeView("Select an option", myPanel2, "Logout");
+        homeView = new HomeView("Select an option", myPanel2, "Logout", "Go back");
      
       // homeView.mainPanel("Select an option", myPanel2, "Logout");
                //homeView.HomePanel("Select an option", myPanel2, "Logout");

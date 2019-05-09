@@ -57,7 +57,7 @@ public class LoyaltyCardView extends JFrame {
         //Add elements to the panel
         myPanel.add(sp);
         //Populating main Panel with appointment data
-       homeView = new HomeView("Search customer", myPanel, "Logout");
+       homeView = new HomeView("Search customer", myPanel, "Logout", "Go back");
 
     }
    

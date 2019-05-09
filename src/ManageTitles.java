@@ -144,9 +144,22 @@ int n = JOptionPane.showOptionDialog(null,
 
 //if create rental
 if (n == 0){
+     // Create an arrayList with initial capacity 2 
+ //       ArrayList<Titles> arrL = new ArrayList<Titles>(4); 
+                ArrayList<Titles> arrL = new ArrayList<Titles>(4);
+                
+    // Add elements to ArrayList 
+    arrL.add(new Titles(titleID, title, titleType, mediaType, year, rate, additional));
+    arrL.add(new Titles(titleID, title, titleType, mediaType, year, rate, additional));
+    arrL.add(new Titles(titleID, title, titleType, mediaType, year, rate, additional));
+    arrL.add(new Titles(titleID, title, titleType, mediaType, year, rate, additional));
+   
     
-    System.out.println("Rent ok");
-    
+    // Access elements of ArrayList 
+    System.out.println(arrL.get(0).toString());
+    System.out.println(arrL.size());
+
+ 
     }
 /*
 //if update customer
@@ -286,7 +299,7 @@ else if (n==2){
         //Add elements to the panel
         myPanel.add(sp);
         //Populating main Panel with appointment data
-       homeView = new HomeView("Search customer", myPanel, "Logout");
+       homeView = new HomeView("Search customer", myPanel, "Logout", "Go back");
 
     
     

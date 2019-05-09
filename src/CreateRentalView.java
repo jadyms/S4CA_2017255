@@ -165,8 +165,7 @@ public class CreateRentalView extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-     
-                
+              
          
            
            //display filme escolhido [
@@ -182,7 +181,7 @@ public class CreateRentalView extends JFrame {
 
       //   homeView = new HomeView("Rent Title ", myPanel, "Logout");
                   
-         homeView = new HomeView("Rent Title ", parent, "Logout"); 
+         homeView = new HomeView("Rent Title ", parent, "Logout","Go back"); 
          
     }
         
