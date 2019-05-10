@@ -160,11 +160,25 @@ public class CreateRentalView extends JFrame {
         Subscription subscription = Subscription.valueOf(setsubscription);
         // ResultSet rs = myModel.showTitles(subscription.getSubscriptonQuery());
 
+         RentalModel rentalModel = new RentalModel();
+          if ( rentalModel.getRental().size()>=4){
+              
+              //JDialog to display information below
+              System.out.println("You cant rent any more titles");
+              
+              
+          } else{
+           
+           ManageRental manageRental = new ManageRental();
+           JPanel rentTable = manageRental.populateTable();
+         
+           
+          
         ManageTitles manageTitles = new ManageTitles();
-
         JPanel table = manageTitles.populateTable();
         table.add(bsubmit);
         parent.add(form);
+        parent.add(rentTable);
         parent.add(table);
 
         bsubmit.addActionListener(new ActionListener() {
@@ -198,6 +212,7 @@ public class CreateRentalView extends JFrame {
         
         
     }
+}
     
 
     

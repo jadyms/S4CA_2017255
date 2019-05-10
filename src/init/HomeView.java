@@ -97,7 +97,7 @@ public class HomeView extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 //To manage rental options
                 DefaultPanel customer = new DefaultPanel();
-                customer.TwoButtonPanel("Rental","Create Rental", "Return Rental");
+                customer.TwoButtonPanel("Rental","Create Rental from customer Loyalty Card", "Return Rental");
               
               //  RentalView rental = new RentalView();
               //  rental.RentalPanel();

@@ -296,7 +296,8 @@ else if (n==2){
         JScrollPane sp = new JScrollPane(searchTitle, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         searchTitle.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         searchTitle.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-
+   searchTitle.setPreferredScrollableViewportSize(table.getPreferredSize());
+        searchTitle.setFillsViewportHeight(true);
         //Panel with appointmnets information
         JPanel myPanel = new JPanel();
         //To be displayed on the Top Panel

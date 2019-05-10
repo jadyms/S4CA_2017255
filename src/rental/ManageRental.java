@@ -35,7 +35,7 @@ public class ManageRental {
     public ManageRental(){
     }
     
-    public void populateTable() {
+    public JPanel populateTable() {
         //###### THIS CODE IN A SEPARATE METHOD #######
         table = new JTable();
         DefaultTableModel model = new DefaultTableModel();
@@ -72,7 +72,7 @@ public class ManageRental {
         table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
         table.setPreferredScrollableViewportSize(table.getPreferredSize());
-        table.setFillsViewportHeight(false);
+        table.setFillsViewportHeight(true);
         table.getSelectionModel().addListSelectionListener(rentalController);
         //Panel which we add the table to  table 
         JPanel myPanel = new JPanel();
@@ -81,10 +81,10 @@ public class ManageRental {
         myPanel.add(sp);
         
         //Populating main frame with Panel
-        homeView = new HomeView("Select a customer", myPanel, "Logout", "Go back");
+        //homeView = new HomeView("Select a customer", myPanel, "Logout", "Go back");
 
         
-        
+        return myPanel;
       }
 
     

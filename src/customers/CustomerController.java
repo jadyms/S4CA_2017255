@@ -76,8 +76,10 @@ public class CustomerController implements ActionListener, ListSelectionListener
                 
                 //if create rental
                 if (n == 1) {
+                    
                     //MAKE RENTAL AS A CLASS AND CREATE AN ARRAY OF RENTALS
                     CreateRentalView createRental = new CreateRentalView();
+                    
                     manageCustomerView = new ManageCustomerView();
                     createRental.createRental(
                              manageCustomerView.getFirstName(), 
