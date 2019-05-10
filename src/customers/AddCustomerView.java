@@ -17,12 +17,13 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import loyaltycard.Subscription;
 
 /**
  *
  * @author JadyMartins
  */
-public class CustomerView extends JFrame {
+public class AddCustomerView extends JFrame {
 
     private static JTextField tfFname;
     private static JTextField tfLname;
@@ -36,7 +37,7 @@ public class CustomerView extends JFrame {
     Subscription subs; //Enum Class
 
     CustomerController customerController;
-    public CustomerView(){
+    public AddCustomerView(){
         
     }
     

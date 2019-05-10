@@ -26,49 +26,20 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author JadyMartins
  */
-public class ManageCustomer extends JFrame {
+public class ManageCustomerView extends JFrame {
 
     private String[][] data = new String[10][6];
     static JTable searchCustomer;
     static JTable table;
-    String card;
-    String fname;
-    String lname;
-    String subscription;
-    String loyalty_number;
-    String hold;
+    private static String card;
+        private static String fname;
+    private static    String lname;
+        private static String subscription;
+        private static String loyalty_number;
+        private static String hold;
     HomeView homeView;
-    //Customer customer;
-
-    public static ArrayList<Customer> getCustomers() {
-
-        ArrayList<Customer> users = new ArrayList<Customer>();
-        Customer c;
-
-        try {
-            Model myModel = new Model();
-            ResultSet rs = myModel.showCustomers();
-
-            while (rs.next()) {
-                c = new Customer(
-                        rs.getString("fname"),
-                        rs.getString("lname"),
-                        rs.getString("subscription"),
-                        rs.getString("card"),
-                        rs.getString("loyalty_number"),
-                        rs.getString("hold")
-                );
-                users.add(c);
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(db.class.getName()).log(Level.SEVERE, null, ex);
-
-        }
-
-        return users;
-
-    }
+   CustomerModel customerModel= new CustomerModel();
+   CustomerController customerController = new CustomerController();
 
     public void populateTable() {
         //###### THIS CODE IN A SEPARATE METHOD #######
@@ -85,26 +56,41 @@ public class ManageCustomer extends JFrame {
         model.setColumnIdentifiers(columnsName);
         Object[] rowData = new Object[6];
 
-        for (int i = 0; i < getCustomers().size(); i++) {
+        for (int i = 0; i < customerModel.getCustomers().size(); i++) {
 
-            rowData[0] = getCustomers().get(i).getFirstname();
-            rowData[1] = getCustomers().get(i).getLastname();
-            rowData[2] = getCustomers().get(i).getSubscription();
-            rowData[3] = getCustomers().get(i).getCard();
-            rowData[4] = getCustomers().get(i).getLoyaltyNumber();
-            rowData[5] = getCustomers().get(i).getHold();
+            rowData[0] = customerModel.getCustomers().get(i).getFirstname();
+            rowData[1] = customerModel.getCustomers().get(i).getLastname();
+            rowData[2] = customerModel.getCustomers().get(i).getSubscription();
+            rowData[3] = customerModel.getCustomers().get(i).getCard();
+            rowData[4] = customerModel.getCustomers().get(i).getLoyaltyNumber();
+            rowData[5] = customerModel.getCustomers().get(i).getHold();
             model.addRow(rowData);
 
         }
 
-        table.setModel(model);
         JScrollPane sp = new JScrollPane(table, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+       
+        table.setModel(model);
         table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+        table.setPreferredScrollableViewportSize(table.getPreferredSize());
+        table.setFillsViewportHeight(false);
+        table.getSelectionModel().addListSelectionListener(customerController);
+        //Panel which we add the table to  table 
+        JPanel myPanel = new JPanel();
+        
+        //Add ScrollPane to the panel
+        myPanel.add(sp);
+        
+        //Populating main frame with Panel
+        homeView = new HomeView("Search customer", myPanel, "Logout", "Go back");
 
-        table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-
-            @Override
+        
+        
+        /*
+        
+        
+        
             public void valueChanged(ListSelectionEvent e) {
                 int row = table.getSelectedRow();
                 fname = (String) table.getValueAt(row, 0);
@@ -150,20 +136,34 @@ public class ManageCustomer extends JFrame {
             }
         });
 
-        //Panel with appointmnets information
-        JPanel myPanel = new JPanel();
-        //To be displayed on the Top Panel
-        String message = "View bookings";
-        //Label of Button 1 and Button 2
-        String b1 = ("Cancel Appointment");
-        String b2 = ("Logout");
-        //Add elements to the panel
-        myPanel.add(sp);
-        //Populating main Panel with appointment data
-        homeView = new HomeView("Search customer", myPanel, "Logout", "Go back");
-
+       */
     }
 
+             
+    
+    public String getFirstName(){
+        return  (String) table.getValueAt(table.getSelectedRow(), 0);
+    }
+    
+     public String getLastName(){
+        return (String) table.getValueAt(table.getSelectedRow(), 1);
+    }
+
+     public String getSubscription(){
+        return (String) table.getValueAt(table.getSelectedRow(), 2);
+    }
+     public String getCard(){
+        return (String) table.getValueAt(table.getSelectedRow(), 3);
+    }
+     public String getLoyaltyNumber(){
+        return (String) table.getValueAt(table.getSelectedRow(), 4);
+    }
+     public String getLoyaltyHold(){
+        return (String) table.getValueAt(table.getSelectedRow(), 5);
+    }
+     
+     
+     
     public void viewCustomers(ResultSet rs) {
         String[] columnName = {"First Name", "Last Name", "Subscription", "Card Number", "Loyalty card", "Titles hold"};
         try {

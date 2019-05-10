@@ -36,20 +36,20 @@ public class CreateTitleView extends JFrame {
     private JTextField tfID;
     private JTextField tfMedia;
     private JTextField tfYear;
-       private JTextField tfRent;
-        private JTextField tfTitle;
-         private JTextField tfCard;
-          private JLabel type;
-   // private JComboBox<String> type;
-    private String[] subscription = new String[]{ "TV Lover", "Music Lover", "Premium", "Movie Lover"};
+    private JTextField tfRent;
+    private JTextField tfTitle;
+    private JTextField tfCard;
+    private JLabel type;
+    // private JComboBox<String> type;
+    private String[] subscription = new String[]{"TV Lover", "Music Lover", "Premium", "Movie Lover"};
     //String titleType;
     JDialog frame;
     HomeView homeView;
     private String[][] data = new String[50][3];
     static JTable searchTitles;
     static JPanel myPanel;
-     static JPanel myPanel2;
-    
+    static JPanel myPanel2;
+
        
     public CreateTitleView(){
       

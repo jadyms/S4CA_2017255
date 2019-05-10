@@ -265,8 +265,8 @@ if (n == 1){
 //if update customer
 else if (n==0){
     
-    Customer updatecustomer = new Customer();
-    updatecustomer.FillCustomerForm(title, titleType, mediaType, titleID );
+   // Customer updatecustomer = new Customer();
+    //updatecustomer.FillCustomerForm(title, titleType, mediaType, titleID );
 }
 //ig manage rental
 else if (n==2){

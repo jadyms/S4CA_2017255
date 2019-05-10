@@ -51,6 +51,18 @@ public class Model {
              
     }
     
+        public ResultSet showCustomers(String q) {   
+         
+        String query = q;
+       // String query ="SELECT * FROM '" + titleType + "';";
+        
+            
+        rs = newdb.newQuery(query);
+        
+ 
+		return rs;	
+             
+    }
     public ResultSet showCustomers() {   
          
         String query = "SELECT * FROM customer;";
