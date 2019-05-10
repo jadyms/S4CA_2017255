@@ -2,7 +2,6 @@ package init;
 
 
 import loyaltycard.LoyaltyCardView;
-import rental.RentalView;
 import model.Model;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -87,7 +86,6 @@ public class HomeView extends JFrame {
         btn2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 //To manage titles options
-                
                 DefaultPanel customer = new DefaultPanel();
                 customer.TwoButtonPanel("Titles","Add Title", "Manage existing title");
                 //TitlesView titles = new TitlesView();
@@ -97,9 +95,12 @@ public class HomeView extends JFrame {
 
         btn3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                //To manage rental
-                RentalView rental = new RentalView();
-                rental.RentalPanel();
+                //To manage rental options
+                DefaultPanel customer = new DefaultPanel();
+                customer.TwoButtonPanel("Rental","Create Rental", "Return Rental");
+              
+              //  RentalView rental = new RentalView();
+              //  rental.RentalPanel();
             }
         });
 

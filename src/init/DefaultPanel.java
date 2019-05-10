@@ -13,6 +13,7 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import rental.RentalController;
 
 public class DefaultPanel extends JFrame{
     //Declaring Home View class 
@@ -21,11 +22,15 @@ public class DefaultPanel extends JFrame{
       HomeView homeView; 
       CustomerController customerController;
       TitleController titleController;
+      RentalController rentalController;
         
     public DefaultPanel(){
               
     }
     
+    //method called in HomeView 
+    //Direct the user to controllers 
+    //Of Customer, Titles, Rental or LoyaltyCard classes
     public void TwoButtonPanel(String action, String b1, String b2){
       
         //Add new customer or manage existing one
@@ -63,6 +68,12 @@ public class DefaultPanel extends JFrame{
            btn1.addActionListener(titleController);
            btn2.addActionListener(titleController);
         
+        } else if (action.equals("Rental")){
+            rentalController = new RentalController();
+           btn1.addActionListener(rentalController);
+           btn2.addActionListener(rentalController);
+          
+            
         }
            //Passing panel onto the Frame         
            homeView = new HomeView("Select an option", myPanel2, "Logout", "Go back");

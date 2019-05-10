@@ -62,18 +62,19 @@ public class CustomerController implements ActionListener, ListSelectionListener
 
     @Override
     public void valueChanged(ListSelectionEvent e) {
-      Customer updatecustomer = new Customer();
-                    
-                    int row =     manageCustomerView.table.getSelectedRow();
-                String fname = (String)     manageCustomerView.table.getValueAt(row, 0);
-                                String  lname = (String)     manageCustomerView.table.getValueAt(row, 1);
-                               String   subscription = (String)     manageCustomerView.table.getValueAt(row, 2);
-                                String  card = (String)     manageCustomerView.table.getValueAt(row, 3);
-                                String  loyalty_number = (String)     manageCustomerView.table.getValueAt(row, 4);
-                                String  hold = (String)     manageCustomerView.table.getValueAt(row, 5);
-          String message = (fname + " " + lname);
-                Object[] options = {"Update Customer ", "Create Rental", "Manage Rental"};
-                int n = JOptionPane.showOptionDialog(null,
+        Customer updatecustomer = new Customer();
+
+        int row = manageCustomerView.table.getSelectedRow();
+        String fname = (String) manageCustomerView.table.getValueAt(row, 0);
+        String lname = (String) manageCustomerView.table.getValueAt(row, 1);
+        String subscription = (String) manageCustomerView.table.getValueAt(row, 2);
+        String card = (String) manageCustomerView.table.getValueAt(row, 3);
+        String loyalty_number = (String) manageCustomerView.table.getValueAt(row, 4);
+        String hold = (String) manageCustomerView.table.getValueAt(row, 5);
+        String message = (fname + " " + lname);
+     
+        Object[] options = {"Update Customer ", "Create Rental", "Manage Rental"};
+        int n = JOptionPane.showOptionDialog(null,
                         "Update " + message + " info",         
                          "Select an option for the user",
                         JOptionPane.YES_NO_CANCEL_OPTION,
