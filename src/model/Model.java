@@ -91,7 +91,7 @@ public class Model {
      
       public ResultSet showRental(String id) {   
          
-        String query = "SELECT * FROM rental WHERE loyalty_number = '" + id + "';";
+        String query = "SELECT * FROM rental WHERE loyalty_number = '" + id + "' AND rental_status = 'RT';";
        // String query ="SELECT * FROM '" + titleType + "';";
         
             

@@ -5,25 +5,37 @@
  */
 package rental;
 
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 /**
  *
  * @author JadyMartins
  */
-public class RentalController implements ActionListener{
+public class RentalController implements ActionListener, ListSelectionListener{
+   
 
     @Override
     public void actionPerformed(ActionEvent e) {
        if (e.getActionCommand().equals("Create Rental")) {
            System.out.println("Create Rental");
+           
+     ManageRental manageRental = new ManageRental();
+            manageRental.populateTable();
        }
        else if (e.getActionCommand().equals(  "Return Rental")) {
            System.out.println("Return Rental");
        } 
     
     
+    }
+
+    @Override
+    public void valueChanged(ListSelectionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

@@ -11,12 +11,6 @@ import javax.swing.event.ListSelectionListener;
 import rental.CreateRentalView;
 import rental.ManageRental;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  *
  * @author JadyMartins
@@ -36,11 +30,8 @@ public class CustomerController implements ActionListener, ListSelectionListener
 
         } else if (e.getActionCommand().equals("Manage existing customer")) {
 
-            Model myModel = new Model();
-            ResultSet rs = myModel.showCustomers();
-
-            ManageCustomerView viewCustomer = new ManageCustomerView();
-            viewCustomer.populateTable();
+            ManageCustomerView manageCustomer = new ManageCustomerView();
+            manageCustomer.populateTable();
 
         }else if (e.getActionCommand().equals("addCustomerDetails")) {
 

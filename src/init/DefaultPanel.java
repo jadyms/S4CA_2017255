@@ -68,7 +68,7 @@ public class DefaultPanel extends JFrame{
            btn1.addActionListener(titleController);
            btn2.addActionListener(titleController);
         
-        } else if (action.equals("Rental")){
+        } else if (action.equals("Rental")) {
             rentalController = new RentalController();
            btn1.addActionListener(rentalController);
            btn2.addActionListener(rentalController);
