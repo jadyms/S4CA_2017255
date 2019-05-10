@@ -6,6 +6,7 @@
 package rental;
 
 
+import customers.ManageCustomerView;
 import init.HomeView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,8 +27,7 @@ public class RentalController implements ActionListener, ListSelectionListener{
     public void actionPerformed(ActionEvent e) {
        if (e.getActionCommand().equals("Create Rental from customer Loyalty Card")) {
            System.out.println("Create Rental from Main menu");
-           //JDialog to insert customer id
-           
+         
            RentalModel rentalModel = new RentalModel();
           if ( rentalModel.getRental().size()>=4){
               
@@ -36,10 +36,12 @@ public class RentalController implements ActionListener, ListSelectionListener{
               
               
           } else{
-           
-              
-     ManageRental manageRental = new ManageRental();
-     homeView = new HomeView("Select a customer",  manageRental.populateTable(), "Logout", "Go back");
+               
+            ManageCustomerView manageCustomer = new ManageCustomerView();
+            manageCustomer.populateTable();
+            
+     //ManageRental manageRental = new ManageRental();
+     //homeView = new HomeView("Select a customer",  manageRental.populateTable(), "Logout", "Go back");
   
           }
      

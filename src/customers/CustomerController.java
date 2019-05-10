@@ -10,6 +10,8 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import rental.CreateRentalView;
 import rental.ManageRental;
+import rental.RentalController;
+import rental.RentalModel;
 
 /**
  *
@@ -47,13 +49,31 @@ public class CustomerController implements ActionListener, ListSelectionListener
                    JOptionPane.showMessageDialog(null, "Form submitted");
                
                      //save info on the db
+            }else if (e.getActionCommand().equals("Create Rental")) {
+
+               RentalModel rentalModel = new RentalModel();
+               if ( rentalModel.getRental().size()>=4){
+              
+              //JDialog to display information below
+              System.out.println("You cant rent any more titles");
+              
+              
+          } else{
+               
+            ManageCustomerView manageCustomer = new ManageCustomerView();
+            manageCustomer.populateTable();
+            
             }
         
-    }
+            }
+            }
 
+    //When a customer is selected
+    //It means when a row is selected from the JTable
     @Override
     public void valueChanged(ListSelectionEvent e) {
-        Customer updatecustomer = new Customer();
+       
+        Customer customer = new Customer();
 
         int row = manageCustomerView.table.getSelectedRow();
         String fname = (String) manageCustomerView.table.getValueAt(row, 0);
@@ -64,7 +84,7 @@ public class CustomerController implements ActionListener, ListSelectionListener
         String hold = (String) manageCustomerView.table.getValueAt(row, 5);
         String message = (fname + " " + lname);
      
-        Object[] options = {"Update Customer ", "Create Rental", "Manage Rental"};
+        Object[] options ={"Update Customer","Create Rental" ,"Manage Rental"};
         int n = JOptionPane.showOptionDialog(null,
                         "Update " + message + " info",         
                          "Select an option for the user",
@@ -79,8 +99,8 @@ public class CustomerController implements ActionListener, ListSelectionListener
                     
                     //MAKE RENTAL AS A CLASS AND CREATE AN ARRAY OF RENTALS
                     CreateRentalView createRental = new CreateRentalView();
-                    
-                    manageCustomerView = new ManageCustomerView();
+                                     
+                   manageCustomerView = new ManageCustomerView();
                     createRental.createRental(
                              manageCustomerView.getFirstName(), 
                             manageCustomerView.getLastName(), 
@@ -95,7 +115,7 @@ public class CustomerController implements ActionListener, ListSelectionListener
                                 
                                 
                                 
-                                updatecustomer.FillCustomerForm(fname,lname, subscription,card);
+                                customer.FillCustomerForm(fname,lname, subscription,card);
                          //manageCustomerView.getFirstName(),
                          //manageCustomerView.getLastName(), 
                          //manageCustomerView.getSubscription(),

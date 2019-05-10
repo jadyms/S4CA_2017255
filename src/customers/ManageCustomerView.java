@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -21,6 +22,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
+import rental.RentalController;
 
 /**
  *
@@ -37,6 +39,9 @@ public class ManageCustomerView extends JFrame {
         private static String subscription;
         private static String loyalty_number;
         private static String hold;
+        static JButton[] options = new JButton[3]   ;
+      
+
     HomeView homeView;
    CustomerModel customerModel= new CustomerModel();
    CustomerController customerController = new CustomerController();
@@ -67,7 +72,26 @@ public class ManageCustomerView extends JFrame {
             model.addRow(rowData);
 
         }
-
+        
+             //When selecting a row, JDialog will print 
+        //the options below
+        //to trigger action Listener for each one
+        //This should be in a inner class as a List =/
+        /*options[0] = new JButton("Update Customer");
+        options[1] = new JButton("Create Rental from ");
+        options[2] = new JButton("Manage Rental");
+        
+        options[0].setActionCommand("Update Customer");
+        options[1].setActionCommand("Create Rental from customer Loyalty Card");
+        options[2].setActionCommand("Manage Rental");
+        RentalController rentalController = new RentalController();
+        
+         options[0].addActionListener(rentalController);
+        options[1].addActionListener(rentalController);
+        options[2].addActionListener(rentalController);
+        */
+        
+        
         JScrollPane sp = new JScrollPane(table, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
        
         table.setModel(model);
@@ -88,6 +112,7 @@ public class ManageCustomerView extends JFrame {
         
         
       }
+  
 
              
     

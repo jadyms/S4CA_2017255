@@ -3,6 +3,7 @@ package rental;
 
 
 import init.HomeView;
+import java.awt.Dimension;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JDialog;

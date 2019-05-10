@@ -51,7 +51,7 @@ public class CreateRentalView extends JFrame {
         
     }
     
-    //Create a rental
+    //Receives a customer selected from JTable
     public void createRental(String setfname, String setlname, String sethold, String setloyalty_number, String setsubscription){
 
         
@@ -156,10 +156,12 @@ public class CreateRentalView extends JFrame {
        // bsubmit.setActionCommand(String.valueOf(isCustomer));
        
        
-              Model myModel = new Model();
+        Model myModel = new Model();
         Subscription subscription = Subscription.valueOf(setsubscription);
         // ResultSet rs = myModel.showTitles(subscription.getSubscriptonQuery());
 
+       RentalController rentalController = new RentalController();
+      
          RentalModel rentalModel = new RentalModel();
           if ( rentalModel.getRental().size()>=4){
               
@@ -176,7 +178,7 @@ public class CreateRentalView extends JFrame {
           
         ManageTitles manageTitles = new ManageTitles();
         JPanel table = manageTitles.populateTable();
-        table.add(bsubmit);
+       // table.add(bsubmit);
         parent.add(form);
         parent.add(rentTable);
         parent.add(table);
