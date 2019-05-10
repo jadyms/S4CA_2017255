@@ -52,7 +52,7 @@ public class CustomerController implements ActionListener, ListSelectionListener
             }else if (e.getActionCommand().equals("Create Rental")) {
 
                RentalModel rentalModel = new RentalModel();
-               if ( rentalModel.getRental().size()>=4){
+               if ( rentalModel.getRental(manageCustomerView.getLoyaltyNumber()).size()>=4){
               
               //JDialog to display information below
               System.out.println("You cant rent any more titles");
@@ -98,17 +98,35 @@ public class CustomerController implements ActionListener, ListSelectionListener
                 if (n == 1) {
                     
                     //MAKE RENTAL AS A CLASS AND CREATE AN ARRAY OF RENTALS
-                    CreateRentalView createRental = new CreateRentalView();
-                                     
-                   manageCustomerView = new ManageCustomerView();
-                    createRental.createRental(
+                   RentalModel rentalModel = new RentalModel();
+                     if ( rentalModel.getRental((String) manageCustomerView.table.getValueAt(row, 4)).size()>=4){
+                         JOptionPane.showMessageDialog (null, 
+                                 "Customer have reached 4 titles rented. Select the option - Manage rental - to return titles" , 
+                                 "You cannot rent any more titles", 
+                                 JOptionPane.ERROR_MESSAGE);
+              
+                                   }else{
+                         
+                    manageCustomerView = new ManageCustomerView();
+                    
+                    CreateRentalView createRental = new CreateRentalView( 
+                            manageCustomerView.getFirstName(), 
+                            manageCustomerView.getLastName(), 
+                            manageCustomerView.getLoyaltyHold(),
+                            manageCustomerView.getLoyaltyNumber(),
+                            manageCustomerView.getSubscription());
+                    
+                    
+                    
+                   /* createRental.createRental(
                              manageCustomerView.getFirstName(), 
                             manageCustomerView.getLastName(), 
                             manageCustomerView.getLoyaltyHold(),
                             manageCustomerView.getLoyaltyNumber(),
                             manageCustomerView.getSubscription());
-
-                } //if update customer
+*/
+                }
+                }//if update customer
                 else if (n == 0) {
 
               

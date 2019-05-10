@@ -29,7 +29,7 @@ public class RentalController implements ActionListener, ListSelectionListener{
            System.out.println("Create Rental from Main menu");
          
            RentalModel rentalModel = new RentalModel();
-          if ( rentalModel.getRental().size()>=4){
+          if ( rentalModel.getRental("101").size()>=4){
               
               //JDialog to display information below
               System.out.println("You cant rent any more titles");

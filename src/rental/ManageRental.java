@@ -36,7 +36,7 @@ public class ManageRental {
     public ManageRental(){
     }
     
-    public JPanel populateTable() {
+    public JPanel populateTable(String id) {
         //###### THIS CODE IN A SEPARATE METHOD #######
         table = new JTable();
         DefaultTableModel model = new DefaultTableModel();
@@ -47,22 +47,23 @@ public class ManageRental {
         columnsName[3] = "Title Type";
         columnsName[4] = "Rental Status";
         columnsName[5] = "Rental Date";
-           columnsName[6] = "Return Date";
-              columnsName[7] = "Returned?";
+        columnsName[6] = "Return Date";
+        columnsName[7] = "Returned?";
 
         model.setColumnIdentifiers(columnsName);
         Object[] rowData = new Object[8];
+        String iD = id;
 
-        for (int i = 0; i < rentalModel.getRental().size(); i++) {
+        for (int i = 0; i < rentalModel.getRental(iD).size(); i++) {
 
-            rowData[0] = rentalModel.getRental().get(i).getLoyaltyNumber();
-            rowData[1] = rentalModel.getRental().get(i).getRentalID();
-            rowData[2] = rentalModel.getRental().get(i).getTitle();
-            rowData[3] = rentalModel.getRental().get(i).getTitleType();
-            rowData[4] = rentalModel.getRental().get(i).getRentalStatus();
-            rowData[5] = rentalModel.getRental().get(i).getRentalDate();
-            rowData[6] = rentalModel.getRental().get(i).getRentalReturn();
-            rowData[7] = rentalModel.getRental().get(i).getReturnDate();
+            rowData[0] = rentalModel.getRental(iD).get(i).getLoyaltyNumber();
+            rowData[1] = rentalModel.getRental(iD).get(i).getRentalID();
+            rowData[2] = rentalModel.getRental(iD).get(i).getTitle();
+            rowData[3] = rentalModel.getRental(iD).get(i).getTitleType();
+            rowData[4] = rentalModel.getRental(iD).get(i).getRentalStatus();
+            rowData[5] = rentalModel.getRental(iD).get(i).getRentalDate();
+            rowData[6] = rentalModel.getRental(iD).get(i).getRentalReturn();
+            rowData[7] = rentalModel.getRental(iD).get(i).getReturnDate();
             model.addRow(rowData);
 
         }

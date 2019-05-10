@@ -45,23 +45,53 @@ public class CreateRentalView extends JFrame {
     JDialog frame;
     HomeView homeView;
     
-    
+    static String setfname;
+    static String setlname;
+        static String sethold;
+        static String setloyalty_number;
+        static String setsubscription;
+ 
+
     public CreateRentalView(){
-        
+       
         
     }
+     public CreateRentalView(String setfname, String setlname, String sethold, String setloyalty_number, String setsubscription){
+        
+        this.setfname = setfname;
+        this.setlname = setlname;
+        this.setloyalty_number = setloyalty_number;
+        this.setsubscription = setsubscription;
+        createRental();
+    
+     }
     
     //Receives a customer selected from JTable
-    public void createRental(String setfname, String setlname, String sethold, String setloyalty_number, String setsubscription){
+    public JPanel parent(JPanel form) {
+        JPanel parent = new JPanel();
+
+        ManageRental manageRental = new ManageRental();
+        JPanel rentTable = manageRental.populateTable(setloyalty_number);
+        ManageTitles manageTitles = new ManageTitles();
+        JPanel table = manageTitles.populateTable();
+        JPanel f = form;
+
+        parent.add(form);
+        parent.add(rentTable);
+        parent.add(table);
+
+        homeView = new HomeView("Rent Title ", parent, "Logout", "Go back");
+        return parent;
+    }
+    public void createRental(){
+  // public void createRental(String setfname, String setlname, String sethold, String setloyalty_number, String setsubscription){
+
 
         
-         JPanel parent = new JPanel();
-      
-          JPanel form = new JPanel(new GridBagLayout());
-     
-      
-         
-        //Setting Layout
+       //  JPanel parent = new JPanel();
+         JPanel form = new JPanel(new GridBagLayout());
+    
+         //Setting Layout
         GridBagConstraints fgbc = new GridBagConstraints();
         fgbc.fill = GridBagConstraints.HORIZONTAL;
 
@@ -163,7 +193,7 @@ public class CreateRentalView extends JFrame {
        RentalController rentalController = new RentalController();
       
          RentalModel rentalModel = new RentalModel();
-          if ( rentalModel.getRental().size()>=4){
+          if ( rentalModel.getRental(setloyalty_number).size()>=4){
               
               //JDialog to display information below
               System.out.println("You cant rent any more titles");
@@ -172,16 +202,16 @@ public class CreateRentalView extends JFrame {
           } else{
            
            ManageRental manageRental = new ManageRental();
-           JPanel rentTable = manageRental.populateTable();
+           JPanel rentTable = manageRental.populateTable(setloyalty_number);
          
            
           
         ManageTitles manageTitles = new ManageTitles();
         JPanel table = manageTitles.populateTable();
        // table.add(bsubmit);
-        parent.add(form);
-        parent.add(rentTable);
-        parent.add(table);
+        //parent.add(form);
+       // parent.add(rentTable);
+        //parent.add(table);
 
         bsubmit.addActionListener(new ActionListener() {
             @Override
@@ -201,9 +231,8 @@ public class CreateRentalView extends JFrame {
         );
      
 
-      //   homeView = new HomeView("Rent Title ", myPanel, "Logout");
                   
-         homeView = new HomeView("Rent Title ", parent, "Logout","Go back"); 
+       //  homeView = new HomeView("Rent Title ", parent, "Logout","Go back"); 
          
     }
         
@@ -211,7 +240,7 @@ public class CreateRentalView extends JFrame {
         
         
         
-        
+       parent(form); 
         
     }
 }

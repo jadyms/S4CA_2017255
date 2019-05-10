@@ -14,14 +14,14 @@ import model.db;
  * @author JadyMartins
  */
 public class RentalModel {
-     public static ArrayList<Rental> getRental() {
+     public static ArrayList<Rental> getRental(String id) {
 
         ArrayList<Rental> rental = new ArrayList<Rental>(4);
         Rental r;
 
         try {
             Model myModel = new Model();
-           ResultSet rs = myModel.showRental("101");
+           ResultSet rs = myModel.showRental(id);
             
 
             while (rs.next()) {

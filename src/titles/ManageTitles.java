@@ -259,7 +259,7 @@ int n = JOptionPane.showOptionDialog(null,
 if (n == 1){
     
     CreateRentalView createRental = new CreateRentalView();
-    createRental.createRental(title, titleType, rate, year, mediaType);
+   // createRental.createRental(title, titleType, rate, year, mediaType);
     
     }
 
