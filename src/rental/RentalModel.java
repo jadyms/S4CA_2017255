@@ -14,9 +14,11 @@ import model.db;
  * @author JadyMartins
  */
 public class RentalModel {
+    
+     static ArrayList<Rental> rental;
      public static ArrayList<Rental> getRental(String id) {
 
-        ArrayList<Rental> rental = new ArrayList<Rental>(4);
+        rental = new ArrayList<Rental>(4);
         Rental r;
 
         try {
@@ -47,5 +49,9 @@ public class RentalModel {
         return rental;
 
     }
+     
+     public void addRental(Rental rent){
+         rental.add(rent);
+     }
     
 }

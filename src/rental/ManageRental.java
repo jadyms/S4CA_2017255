@@ -37,7 +37,7 @@ public class ManageRental {
     }
     
     public JPanel populateTable(String id) {
-        //###### THIS CODE IN A SEPARATE METHOD #######
+  
         table = new JTable();
         DefaultTableModel model = new DefaultTableModel();
         Object[] columnsName = new Object[8];
