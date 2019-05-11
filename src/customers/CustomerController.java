@@ -1,6 +1,8 @@
 package customers;
 
 
+import static customers.CustomerModel.users;
+import init.HomeView;
 import model.Model;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -23,6 +25,7 @@ public class CustomerController implements ActionListener, ListSelectionListener
     AddCustomerView addCustomerView;
     ManageCustomerView manageCustomerView;
     CustomerModel customerModel;
+    HomeView homeView;
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -43,20 +46,24 @@ public class CustomerController implements ActionListener, ListSelectionListener
             //PLACE IT IN CUSTOMER MODEL
              //creating a instance of customer class
              addCustomerView = new AddCustomerView(); 
+            // int last = Integer.valueof((String) customerModel.users.get(customerModel.users.size() - 1));
+       
+            int last =  Integer.parseInt(customerModel.users.get(customerModel.users.size()-1).getLoyaltyNumber())+1;
                      customerModel.users.add(new Customer(
                      
                      addCustomerView.getFirstName(), 
                      addCustomerView.getLastName(), 
-                              addCustomerView.getSubscriptionType(),
+                     addCustomerView.getSubscriptionType(),
                      addCustomerView.getCard(), 
-                             "104",
+                     String.valueOf(last),
                               "0"
                                   ));
                 
      
         
                    JOptionPane.showMessageDialog(null, "Form submitted");
-               
+      
+                   
                      //save info on the db
             }else if (e.getActionCommand().equals("Create Rental")) {
 

@@ -89,6 +89,19 @@ public class Model {
              
     }
      
+      public ResultSet showAllRental() {   
+         
+        String query = "SELECT * FROM rental; ";
+       // String query ="SELECT * FROM '" + titleType + "';";
+        
+            
+        rs = newdb.newQuery(query);
+        
+ 
+		return rs;	
+             
+    }
+     
       public ResultSet showRental(String id) {   
          
         String query = "SELECT * FROM rental WHERE loyalty_number = '" + id + "' AND rental_status = 'RT';";

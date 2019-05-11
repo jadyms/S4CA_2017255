@@ -43,8 +43,22 @@ public class CustomerModel {
             Logger.getLogger(db.class.getName()).log(Level.SEVERE, null, ex);
 
         }
+    
+        
+       
+       
+        
+  
+        
 
         return users;
 
+    }
+    
+    public String getLastLoyaltyNumber(){
+         
+         int last =  Integer.parseInt(users.get(users.size()-1).getLoyaltyNumber())+1;
+        System.out.println(String.valueOf(last));
+         return String.valueOf(last);
     }
 }
