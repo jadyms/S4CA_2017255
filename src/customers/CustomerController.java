@@ -32,8 +32,9 @@ public class CustomerController implements ActionListener, ListSelectionListener
 
         } else if (e.getActionCommand().equals("Manage existing customer")) {
 
-            ManageCustomerView manageCustomer = new ManageCustomerView();
-            manageCustomer.populateTable();
+            
+//            ManageCustomerView manageCustomer = new ManageCustomerView();
+//            manageCustomer.populateTable();
 
         }else if (e.getActionCommand().equals("addCustomerDetails")) {
 
