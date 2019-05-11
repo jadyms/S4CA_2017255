@@ -9,6 +9,8 @@ import model.Model;
 import model.db;
 
 public class CustomerModel {
+    
+      static ArrayList<Customer> users;
       
     public CustomerModel(){
         
@@ -17,7 +19,7 @@ public class CustomerModel {
  
     public static ArrayList<Customer> getCustomers() {
 
-        ArrayList<Customer> users = new ArrayList<Customer>();
+        users = new ArrayList<Customer>();
         Customer c;
 
         try {

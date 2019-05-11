@@ -57,8 +57,8 @@ public class db {
         try {
 
             stmt.execute(query);
-            //stmt.close();
-            //conn.close();
+            stmt.close();
+            conn.close();
 
         } catch (SQLException se) {
             System.out.println("SQL Exception:");
@@ -87,9 +87,9 @@ public class db {
             }
 
             // Close the result set, statement and the connection
-           // rs.close();
-            //stmt.close();
-            //conn.close();
+            rs.close();
+            stmt.close();
+            conn.close();
 
         } catch (SQLException e) {
             // TODO Auto-generated catch block
@@ -109,9 +109,9 @@ public class db {
             }
 
             // Close the result set, statement and the connection
-            //rs.close();
-            //stmt.close();
-            //conn.close();
+            rs.close();
+            stmt.close();
+            conn.close();
 
         } catch (SQLException e) {
             // TODO Auto-generated catch block

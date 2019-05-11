@@ -22,6 +22,7 @@ public class CustomerController implements ActionListener, ListSelectionListener
     Customer newCustomer;
     AddCustomerView addCustomerView;
     ManageCustomerView manageCustomerView;
+    CustomerModel customerModel;
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -29,24 +30,31 @@ public class CustomerController implements ActionListener, ListSelectionListener
 
             AddCustomerView createCustomer = new AddCustomerView();
             createCustomer.addCustomer("", "", "", "");
-
+            
+     
         } else if (e.getActionCommand().equals("Manage existing customer")) {
 
             
-//            ManageCustomerView manageCustomer = new ManageCustomerView();
-//            manageCustomer.populateTable();
+           ManageCustomerView manageCustomer = new ManageCustomerView();
+            manageCustomer.populateTable();
 
         }else if (e.getActionCommand().equals("addCustomerDetails")) {
 
             //PLACE IT IN CUSTOMER MODEL
              //creating a instance of customer class
              addCustomerView = new AddCustomerView(); 
-             newCustomer = new Customer(
+                     customerModel.users.add(new Customer(
+                     
                      addCustomerView.getFirstName(), 
                      addCustomerView.getLastName(), 
+                              addCustomerView.getSubscriptionType(),
                      addCustomerView.getCard(), 
-                     addCustomerView.getSubscriptionType());
+                             "104",
+                              "0"
+                                  ));
                 
+     
+        
                    JOptionPane.showMessageDialog(null, "Form submitted");
                
                      //save info on the db

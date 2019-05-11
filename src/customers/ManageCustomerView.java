@@ -60,15 +60,26 @@ public class ManageCustomerView extends JFrame {
 
         model.setColumnIdentifiers(columnsName);
         Object[] rowData = new Object[6];
+//
+//        for (int i = 0; i < customerModel.getCustomers().size(); i++) {
+//
+//            rowData[0] = customerModel.getCustomers().get(i).getFirstname();
+//            rowData[1] = customerModel.getCustomers().get(i).getLastname();
+//            rowData[2] = customerModel.getCustomers().get(i).getSubscription();
+//            rowData[3] = customerModel.getCustomers().get(i).getCard();
+//            rowData[4] = customerModel.getCustomers().get(i).getLoyaltyNumber();
+//            rowData[5] = customerModel.getCustomers().get(i).getHold();
+//            model.addRow(rowData);
+//
+//        }
+         for (int i = 0; i < customerModel.users.size(); i++) {
 
-        for (int i = 0; i < customerModel.getCustomers().size(); i++) {
-
-            rowData[0] = customerModel.getCustomers().get(i).getFirstname();
-            rowData[1] = customerModel.getCustomers().get(i).getLastname();
-            rowData[2] = customerModel.getCustomers().get(i).getSubscription();
-            rowData[3] = customerModel.getCustomers().get(i).getCard();
-            rowData[4] = customerModel.getCustomers().get(i).getLoyaltyNumber();
-            rowData[5] = customerModel.getCustomers().get(i).getHold();
+            rowData[0] = customerModel.users.get(i).getFirstname();
+            rowData[1] = customerModel.users.get(i).getLastname();
+            rowData[2] = customerModel.users.get(i).getSubscription();
+            rowData[3] = customerModel.users.get(i).getCard();
+            rowData[4] = customerModel.users.get(i).getLoyaltyNumber();
+            rowData[5] = customerModel.users.get(i).getHold();
             model.addRow(rowData);
 
         }
@@ -107,12 +118,21 @@ public class ManageCustomerView extends JFrame {
         myPanel.add(sp);
         
         //Populating main frame with Panel
-        homeView = new HomeView("Select a customer", myPanel, "Logout", "Go back");
-
+         
+     homeView = new HomeView("Select a customer", myPanel, "Logout", "Go back");
         
+     
         
       }
-  
+    
+    public void showArray(){
+        
+    }
+  public void showJPanel(){
+      
+     // homeView = new HomeView("Select a customer", populateTable(), "Logout", "Go back");
+
+  }
 
              
     
