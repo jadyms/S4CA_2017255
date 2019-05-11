@@ -29,7 +29,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author JadyMartins
  */
-public class CreateTitleView extends JFrame {
+public class AddTitleView extends JFrame {
        
     //WORK WITH ENUMS
     
@@ -51,7 +51,7 @@ public class CreateTitleView extends JFrame {
     static JPanel myPanel2;
 
        
-    public CreateTitleView(){
+    public AddTitleView(){
       
     }
     
@@ -160,92 +160,5 @@ public class CreateTitleView extends JFrame {
     }
 
    
-     public void showMovies(ResultSet rs) {
-        String[] columnName = {"ID", "Media", "Year"};
-        try {
-            int i = 0;
-            while (rs.next()) {
-
-                data[i][0] = rs.getString("id");
-                data[i][1] = rs.getString("media_type");
-                data[i][2] = rs.getString("year");
-               // data[i][3] = rs.getString("aptStatus");
-               // data[i][4] = rs.getString("cEmail");
-                i++;
-            }
-        } catch (SQLException se) {
-            System.out.println("SQL Exception:");
-
-        }
-
-
-        DefaultTableModel model = new DefaultTableModel(data, columnName);
-        searchTitles = new JTable(model);
-       // searchTitles.getSelectionModel().addListSelectionListener(cController);
-
-        JScrollPane sp = new JScrollPane(searchTitles, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-        searchTitles.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        searchTitles.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-        
-        
-
-        //Panel with appointmnets information
-        myPanel = new JPanel();
-        //To be displayed on the Top Panel
-        String message = "View bookings";
-        //Label of Button 1 and Button 2
-        String b1 = ("Cancel Appointment");
-        String b2 = ("Logout");
-        //Add elements to the panel
-        myPanel.add(sp);
-        //Populating main Panel with appointment data
-       homeView = new HomeView("Search titles", myPanel, "Logout", "Go back");
-
-    }
-    
-     public JPanel showTitles(ResultSet rs) {
-        String[] columnName = {"ID", "Media", "Year"};
-        try {
-            int i = 0;
-            while (rs.next()) {
-
-                data[i][0] = rs.getString("id");
-                data[i][1] = rs.getString("media_type");
-                data[i][2] = rs.getString("year");
-               // data[i][3] = rs.getString("aptStatus");
-               // data[i][4] = rs.getString("cEmail");
-                i++;
-            }
-        } catch (SQLException se) {
-            System.out.println("SQL Exception:");
-
-        }
-
-
-        DefaultTableModel model = new DefaultTableModel(data, columnName);
-        searchTitles = new JTable(model);
-       // searchTitles.getSelectionModel().addListSelectionListener(cController);
-
-        JScrollPane sp = new JScrollPane(searchTitles, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-        searchTitles.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        searchTitles.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-                 searchTitles.setPreferredScrollableViewportSize(   searchTitles.getPreferredSize());
-           searchTitles.setFillsViewportHeight(true);
-
-        //Panel with appointmnets information
-        myPanel2 = new JPanel();
-        //To be displayed on the Top Panel
-        String message = "View bookings";
-        //Label of Button 1 and Button 2
-        String b1 = ("Cancel Appointment");
-        String b2 = ("Logout");
-        //Add elements to the panel
-        myPanel2.add(sp);
-        //Populating main Panel with appointment data
-      // homeView = new HomeView("Search titles", myPanel, "Logout");
-
-      return myPanel2;
-    }
-    
-     
+   
 }

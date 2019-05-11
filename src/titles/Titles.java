@@ -9,7 +9,7 @@ public class Titles {
     String rate;
     String title;
     String additional;
-    CreateTitleView createTitle; 
+    AddTitleView createTitle; 
     
     public Titles(){
         

@@ -30,7 +30,7 @@ public class TitleController implements ActionListener{
                     possibilities,
                     possibilities[0]);
             
-            CreateTitleView createTitle = new CreateTitleView();
+            AddTitleView createTitle = new AddTitleView();
            createTitle.addTitle(titleType);
             
 

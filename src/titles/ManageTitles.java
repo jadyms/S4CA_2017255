@@ -23,18 +23,8 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
-import static titles.CreateTitleView.searchTitles;
+import static titles.AddTitleView.searchTitles;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author JadyMartins
- */
 public class ManageTitles extends JFrame{
     
     private String[][] data = new String[10][6];
@@ -48,10 +38,10 @@ public class ManageTitles extends JFrame{
     String rate;
     String additional;
     HomeView homeView;
-    
+    TitleModel titleModel= new TitleModel();
         
-           
-           public static ArrayList<Titles> getTitles(){
+     /*      
+       public static ArrayList<Titles> getTitles(){
                
                 ArrayList<Titles> titles = new ArrayList<Titles>();
         
@@ -85,7 +75,7 @@ public class ManageTitles extends JFrame{
                return titles;
              
            }
-           
+       */    
            public JPanel populateTable(){
                //###### THIS CODE IN A SEPARATE METHOD #######
                table = new JTable();
@@ -101,19 +91,19 @@ public class ManageTitles extends JFrame{
                
                model.setColumnIdentifiers(columnsName);
                Object[] rowData = new Object[7];
-               System.out.println(getTitles().get(2).getTitleType());
+             //  System.out.println(getTitles().get(2).getTitleType());
                
                
-               for(int i = 0; i < getTitles().size(); i++){
+               for(int i = 0; i < titleModel.getTitles().size(); i++){
                
                           
-                   rowData[0] = getTitles().get(i).getTitleID();
-                   rowData[1] = getTitles().get(i).getTitle();
-                   rowData[2] = getTitles().get(i).getTitleType(); 
-                   rowData[3] = getTitles().get(i).getMediaType();
-                   rowData[4] = getTitles().get(i).getYear();
-                   rowData[5] = getTitles().get(i).getRate(); 
-                   rowData[6] = getTitles().get(i).getAdditional();    
+                   rowData[0] = titleModel.getTitles().get(i).getTitleID();
+                   rowData[1] = titleModel.getTitles().get(i).getTitle();
+                   rowData[2] = titleModel.getTitles().get(i).getTitleType(); 
+                   rowData[3] = titleModel.getTitles().get(i).getMediaType();
+                   rowData[4] = titleModel.getTitles().get(i).getYear();
+                   rowData[5] = titleModel.getTitles().get(i).getRate(); 
+                   rowData[6] = titleModel.getTitles().get(i).getAdditional();    
                    model.addRow(rowData);
                }
                    
@@ -121,7 +111,11 @@ public class ManageTitles extends JFrame{
                JScrollPane sp = new JScrollPane(table, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
                table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
                table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+                table.setPreferredScrollableViewportSize(table.getPreferredSize());
+                 table.setFillsViewportHeight(true);
                table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+                   
+                   
                    private Frame owner;
 
                    @Override
