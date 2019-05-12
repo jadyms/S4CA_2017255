@@ -23,14 +23,14 @@ import loyaltycard.Subscription;
  *
  * @author JadyMartins
  */
+
+//Form to get user details
 public class AddCustomerView extends JFrame {
 
     private static JTextField tfFname;
     private static JTextField tfLname;
     private static JTextField tfCard;
     private static JComboBox<String> subscriptionType;
-    // DELETE private String[] subscription = new String[]{"TV_LOVER", "MUSIC_LOVER", "PREMIUM", "VIDEO_LOVER"};
-    JDialog frame;
     HomeView homeView;
     boolean isUpdate;
     JOptionPane j;
@@ -41,10 +41,6 @@ public class AddCustomerView extends JFrame {
         
     }
     
-    //create a constructor that receives an user as an object
-
-    
-    //Populate JTextField with getters
     
     //Getters
     public String getSubscriptionType() {

@@ -14,65 +14,31 @@ import model.db;
  * @author JadyMartins
  */
 public class RentalModel {
+
+    static ArrayList<Rental> rental;//not in use
+    static ArrayList<Rental> allRental;//rental from the db
+
     
-     static ArrayList<Rental> rental;
-       static ArrayList<Rental> allRental;
-       
-     public static ArrayList<Rental> getRental(String id) {
-
-        rental = new ArrayList<Rental>(4);
-        Rental r;
-
-        try {
-            Model myModel = new Model();
-           ResultSet rs = myModel.showRental(id);
-            
-
-            while (rs.next()) {
-                r = new Rental(
-                        rs.getString("loyalty_number"),
-                        rs.getString("rental_id"),
-                        rs.getString("title"),
-                           rs.getString("title_type"),
-                        rs.getString("rental_status"),
-                        rs.getString("rental_date"),
-                        rs.getString("rental_return"),
-                        rs.getString("returned_date")
-                        
-                );
-                rental.add(r);
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(db.class.getName()).log(Level.SEVERE, null, ex);
-
-        }
-
-        return rental;
-
-    }
-     
-          public static ArrayList<Rental> getAllRental(){
+    //create an array of rentals from the db
+    public static ArrayList<Rental> getAllRental() {
 
         allRental = new ArrayList<Rental>(4);
         Rental r;
 
         try {
             Model myModel = new Model();
-           ResultSet rs = myModel.showAllRental();
-            
+            ResultSet rs = myModel.showAllRental();
 
             while (rs.next()) {
                 r = new Rental(
                         rs.getString("loyalty_number"),
                         rs.getString("rental_id"),
                         rs.getString("title"),
-                           rs.getString("title_type"),
+                        rs.getString("title_type"),
                         rs.getString("rental_status"),
                         rs.getString("rental_date"),
                         rs.getString("rental_return"),
                         rs.getString("returned_date")
-                        
                 );
                 allRental.add(r);
             }
@@ -85,10 +51,43 @@ public class RentalModel {
         return allRental;
 
     }
-
-     
-     public void addRental(Rental rent){
-         rental.add(rent);
-     }
     
+    //first attempt to hold rentals - not in use
+    public static ArrayList<Rental> getRental(String id) {
+
+        rental = new ArrayList<Rental>(4);
+        Rental r;
+
+        try {
+            Model myModel = new Model();
+            ResultSet rs = myModel.showRental(id);
+
+            while (rs.next()) {
+                r = new Rental(
+                        rs.getString("loyalty_number"),
+                        rs.getString("rental_id"),
+                        rs.getString("title"),
+                        rs.getString("title_type"),
+                        rs.getString("rental_status"),
+                        rs.getString("rental_date"),
+                        rs.getString("rental_return"),
+                        rs.getString("returned_date")
+                );
+                rental.add(r);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(db.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+
+        return rental;
+
+    }
+
+
+    public void addRental(Rental rent) {
+        rental.add(rent);
+    }
+
 }

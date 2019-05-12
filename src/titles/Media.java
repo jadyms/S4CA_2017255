@@ -1,14 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package titles;
 
 /**
  *
  * @author JadyMartins
  */
+
+//Enum for media type 
+//Used when  creating a new title
+//User select the title type and Media value is attached to it
 public enum Media {
     
     MUSIC ("CD"),
@@ -16,8 +15,6 @@ public enum Media {
     MOVIE ("BLU_RAY"),
     BOX_SET ("DVD");
    
-    
-    
     private String media;
     
     Media(final String media){

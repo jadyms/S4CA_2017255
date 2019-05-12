@@ -2,14 +2,15 @@ package customers;
 
 import loyaltycard.Subscription;
 
+//creates a customer as an object Customer
 public class Customer {
-
-    String fname;
-    String lname;
-    String card;
-    String subscription;
-    String loyalty_number;
-    String hold;
+//attrubutes
+    private String fname;
+    private String lname;
+    private String card;
+    private String subscription;
+    private String loyalty_number;
+    private String hold;
     AddCustomerView updateCustomer;
 
     public Customer(String fname, String lname, String subscription, String card, String loyalty_number, String hold) {
@@ -28,12 +29,14 @@ public class Customer {
         this.card = card;
         this.subscription = subscription;
 
-        System.out.println(fname + lname + card + subscription);
-        setSubscription(Subscription.valueOf(subscription.toUpperCase()));
+     
+        
     }
 
     Customer() {
     }
+    
+    //getters
 
     public String getFirstname() {
         return this.fname;
@@ -58,34 +61,15 @@ public class Customer {
     public String getHold() {
         return this.hold;
     }
-
-    public String setSubscription(Subscription s) {
-        if (null != s) {
-            switch (s) {
-                case MUSIC_LOVER:
-                    System.out.println(("This user can rent Concerts and Music"));
-                case PREMIUM:
-                    System.out.println("This user can rent anything");
-                case TV_LOVER:
-                    System.out.println("This user can rent Box Sets ");
-                case VIDEO_LOVER:
-                    System.out.println("This user can rent Movies");
-                default:
-                    break;
-            }
-        }
-        return null;
-    }
-
+        
     public void FillCustomerForm(String fname, String lname, String subscription, String card, String loyalty_card) {
 
         //get user info from the db
         //call this method passing an user as an object
         updateCustomer = new AddCustomerView();
-
         updateCustomer.addCustomer(fname, lname, subscription, card)
                 ;
-        //  updateCustomer.setValues(fname, lname, card);
+    
 
     }
 

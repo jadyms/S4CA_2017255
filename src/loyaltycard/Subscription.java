@@ -1,6 +1,8 @@
 package loyaltycard;
 
-
+//previsouly created to determine
+//user types of titles allowed to rent
+//not complete
 public enum Subscription {
     MUSIC_LOVER("select * from titles where titleType = \"MUSIC\" OR titleType = \"LIVE_CONCERT\";"),
     TV_LOVER("select * from titles where titleType = \"BOX_SET\" ;"),
@@ -18,16 +20,3 @@ public enum Subscription {
         
     }
   }
-
-
-/*
-  
-   switch(Subscription){
-            case :
-                int z = 2;
-                String x = "music";
-                String y = "tv";            
-                break;
-}
-
-*/

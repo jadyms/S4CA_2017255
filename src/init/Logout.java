@@ -3,9 +3,6 @@ package init;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -18,8 +15,6 @@ Class to be called when logout is hit
 Displays a JOptionPane with Yes or No option
  */
 
-
-//    Controller mcontroller;
     //Constructor
     public Logout() {
         
@@ -46,16 +41,7 @@ Displays a JOptionPane with Yes or No option
             //Would you like to logout? YES
             if (r == 0) {
                 System.exit(r);
-                /*
-                try {
-                    myModel.newdb.stmt.close();
-                    myModel.newdb.rs.close();
-                    myModel.newdb.conn.close();
-                    //Would you like to logout? NO
-                } catch (SQLException ex) {
-                    Logger.getLogger(ProviderController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-*/
+                
             } else if (r == 1) {
                 //DO NOTHINHG, JUST CLOSE THE DIALOG BOX
             }

@@ -4,8 +4,9 @@ package rental;
  *
  * @author JadyMartins
  */
+//Create an object rental
 public class Rental {
-    
+    //attributes
     private String loyalty_number;
     private String rental_id;
     private String title;
@@ -29,7 +30,7 @@ public class Rental {
         this.returnDate = returnDate;
       
     }
-    
+    //getters
     public String getLoyaltyNumber(){
         return this.loyalty_number;
     }

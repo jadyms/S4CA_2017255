@@ -1,38 +1,26 @@
 package titles;
 
-
-import customers.CustomerController;
 import init.HomeView;
-import java.awt.CardLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.ListSelectionModel;
-import javax.swing.table.DefaultTableModel;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
  *
  * @author JadyMartins
  */
+
+//Form used to add a new title
 public class AddTitleView extends JFrame {
 
-    
+    //attributes
     private static JLabel tfID;
     private static JLabel mediaType;
     private static JTextField tfYear;
@@ -41,28 +29,24 @@ public class AddTitleView extends JFrame {
     private static JTextField tfAdditional;
     private static JLabel type;
     private static JComboBox<String> titleType;
-
-    JDialog frame;
-    HomeView homeView;
-
-    static JTable searchTitles;
     static JPanel myPanel;
     static JPanel myPanel2;
-    Media media;
+  
+    HomeView homeView; //main frame
+    Media media; //enum 
     TitleController titleController;
 
-       
-    public AddTitleView(){
-      
+    public AddTitleView() {
+
     }
-    
-    
-    public void addTitle(String titleID){
-            
+
+    //Display the form for a new title
+    //already sets the title ID - in the title controller
+    public void addTitle(String titleID) {
+
         //Panel for form 
         JPanel form = new JPanel(new GridBagLayout());
-      
-         
+
         //Setting Layout
         GridBagConstraints fgbc = new GridBagConstraints();
         fgbc.fill = GridBagConstraints.HORIZONTAL;
@@ -79,8 +63,8 @@ public class AddTitleView extends JFrame {
         fgbc.gridy = 1; // row 1
         fgbc.gridwidth = 1; //1 cell
         form.add(ltype, fgbc);
-        
-            JLabel ltitle = new JLabel("Title name: ");
+
+        JLabel ltitle = new JLabel("Title name: ");
         fgbc.gridx = 0; //leftmost column
         fgbc.gridy = 2; // row 3
         fgbc.gridwidth = 1; //1 cell
@@ -92,22 +76,19 @@ public class AddTitleView extends JFrame {
         fgbc.gridwidth = 1; //1 cell
         form.add(lyear, fgbc);
 
-        
         JLabel lRent = new JLabel("Price: ");
         fgbc.gridx = 0; //leftmost column
         fgbc.gridy = 4; // row 5
         fgbc.gridwidth = 1; //1 cell
         form.add(lRent, fgbc);
-        
-        
+
         JLabel lmedia = new JLabel("Media Type: ");
         fgbc.gridx = 0; //leftmost column
         fgbc.gridy = 5; // row 6
         fgbc.gridwidth = 1; //1 cell
         form.add(lmedia, fgbc);
-     
-        
-         JLabel ladditional = new JLabel("Additional Information(artist, band): ");
+
+        JLabel ladditional = new JLabel("Additional Information(artist, band): ");
         fgbc.gridx = 0; //leftmost column
         fgbc.gridy = 6; // row 7
         fgbc.gridwidth = 1; //1 cell
@@ -126,7 +107,7 @@ public class AddTitleView extends JFrame {
         fgbc.gridwidth = 3; //3 cell
         form.add(titleType, fgbc);
 
-        tfTitle= new JTextField(25);
+        tfTitle = new JTextField(25);
         fgbc.gridx = 1; //middle column
         fgbc.gridy = 2; // row 2
         fgbc.gridwidth = 3; //3 cell
@@ -138,34 +119,27 @@ public class AddTitleView extends JFrame {
         fgbc.gridwidth = 3; //3 cell
         form.add(tfYear, fgbc);
 
-         tfPrice = new JTextField(25);
+        tfPrice = new JTextField(25);
         fgbc.gridx = 1; //middle column
         fgbc.gridy = 4; // row 3
         fgbc.gridwidth = 3; //3 cell
         form.add(tfPrice, fgbc);
-       // subscriptionType.setVisible(isCustomer);
        
-      //media = (Media) titleType.getSelectedItem();
-       
- 
 
-  //      mediaType = new JComboBox(media.getMedia());
-  //Improvement = could be better if it was a dynamic JComboBox
-  
+        //media = (Media) titleType.getSelectedItem();
+        //mediaType = new JComboBox(media.getMedia());
+        //Improvement = could be better if it was a dynamic JComboBox
         mediaType = new JLabel("Music = CD / Box Set and Live Concert = DVD / Movie = BluRay");
         fgbc.gridx = 1; //middle column
         fgbc.gridy = 5; // row 3
         fgbc.gridwidth = 3; //3 cell
         form.add(mediaType, fgbc);
-       // subscriptionType.setVisible(isCustomer);
-       
+      
         tfAdditional = new JTextField(25);
         fgbc.gridx = 1; //middle column
         fgbc.gridy = 6; // row 3
         fgbc.gridwidth = 3; //3 cell
         form.add(tfAdditional, fgbc);
-       // subscriptionType.setVisible(isCustomer);
-
 
         //Button
         JButton bsubmit = new JButton("Submit");
@@ -173,16 +147,16 @@ public class AddTitleView extends JFrame {
         fgbc.gridy = 7; // row 6
         fgbc.gridwidth = 3; //3 cell
         form.add(bsubmit, fgbc);
-          titleController = new TitleController();
+        
+        //Action events in the controller
+        titleController = new TitleController();
         bsubmit.addActionListener(titleController);
-      
-     
-         homeView = new HomeView("New Title Details ", form, "Logout", "Go back");
+
+        //place panel in the main frame
+        homeView = new HomeView("New Title Details ", form, "Logout", "Go back");
     }
 
-   
     //Getters
-    
     public String getTitleId() {
         return tfID.getText();
     }
@@ -211,7 +185,5 @@ public class AddTitleView extends JFrame {
     public String getAdditonal() {
         return tfAdditional.getText();
     }
-       
-     
-   
+
 }

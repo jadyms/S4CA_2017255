@@ -1,20 +1,6 @@
 package titles;
 
-
-import rental.CreateRentalView;
-import rental.ManageRental;
-import model.db;
-import model.Model;
-import customers.Customer;
 import init.HomeView;
-import java.awt.Frame;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -24,27 +10,31 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
-import rental.Rental;
-import rental.RentalModel;
-import static titles.AddTitleView.searchTitles;
+
+//This class populates the table with array of titles
 
 public class ManageTitlesView extends JFrame {
 
-    private String[][] data = new String[10][6];
-    static JTable searchTitle;
+    //atributes 
     static JTable table;
-    String titleID;
-    String title;
-    String titleType;
-    String mediaType;
-    String year;
-    String rate;
-    String additional;
+    private String titleID;
+    private String title;
+    private String titleType;
+    private String mediaType;
+    private String year;
+    private String rate;
+    private String additional;
+    
     HomeView homeView;
     TitleModel titleModel = new TitleModel();
 
+    //String x and y are used to name the buttons differently
+    //boolean z sets the row/column selection
+    //none of them worked for what I expected :(
+    
     public JPanel populateTable(String x, String y, boolean z) {
-       
+
+        //table definition
         table = new JTable();
         DefaultTableModel model = new DefaultTableModel();
         Object[] columnsName = new Object[7];
@@ -55,11 +45,14 @@ public class ManageTitlesView extends JFrame {
         columnsName[4] = "Year";
         columnsName[5] = "Rate";
         columnsName[6] = "Info";
-
         model.setColumnIdentifiers(columnsName);
-        Object[] rowData = new Object[7];
         
-           for (int i = 0; i < titleModel.titles.size(); i++) {
+        Object[] rowData = new Object[7];
+
+        //for the size of the array of titles,
+        //get every title
+        //add to the table
+        for (int i = 0; i < titleModel.titles.size(); i++) {
 
             rowData[0] = titleModel.titles.get(i).getTitleID();
             rowData[1] = titleModel.titles.get(i).getTitle();
@@ -70,7 +63,7 @@ public class ManageTitlesView extends JFrame {
             rowData[6] = titleModel.titles.get(i).getAdditional();
             model.addRow(rowData);
         }
-
+        //table definitions
         table.setModel(model);
         JScrollPane sp = new JScrollPane(table, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -81,8 +74,11 @@ public class ManageTitlesView extends JFrame {
         table.setColumnSelectionAllowed(z);
         table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 
+            //when a row (title) is selected
             @Override
             public void valueChanged(ListSelectionEvent e) {
+                //get values from the row
+                //assign them to the attributes
                 int row = table.getSelectedRow();
                 title = (String) table.getValueAt(row, 0);
                 titleType = (String) table.getValueAt(row, 1);
@@ -91,10 +87,11 @@ public class ManageTitlesView extends JFrame {
                 year = (String) table.getValueAt(row, 4);
                 rate = (String) table.getValueAt(row, 5);
                 additional = (String) table.getValueAt(row, 6);
-                // String message = ("Location: "+loc + "\r\n Provider: " + provider+ "\r\n Provider Email: " +pEmail+ " \r\nDate: " +fdate+ " \r\nTime: " +ftime);
-
                 String message = (title + " " + titleType + " " + mediaType + " " + titleID + " " + year + " " + rate + " " + additional);
 
+                //Two options - delete or update title
+                //should also display - rent or choose another title
+                //it is not the best strategy - it did not work as expected
                 Object[] options = {x, y};
                 int n = JOptionPane.showOptionDialog(null,
                         "Title " + message,
@@ -105,30 +102,30 @@ public class ManageTitlesView extends JFrame {
                         options,
                         options[1]);
 
-//if delete
+                //if delete
                 if (n == 0) {
-                    System.out.println("Create a method to .remove from array at index.titleID");
+                    System.out.println("If title - Create a method to .remove from array at index.titleID");
+                    System.out.println("If rent - add to array");
+                //if update    
+                } else if (n == 0) {
+                    System.out.println("Create a method to .set values to array at index.titleID");
                 }
-                else if (n==0){
-                     System.out.println("Create a method to .set values to array at index.titleID");
-                }
-                
+
             }
         });
 
-        //Panel with appointmnets information
+        //Panel for the table
         JPanel myPanel = new JPanel();
-        
-        //Add elements to the panel
-        myPanel.add(sp);
-        //Populating main Panel with appointment data
 
-        //homeView = new HomeView("Search Titles", myPanel, "Logout", "Go back");
+        //Add table to the panel
+        myPanel.add(sp);
+      
         return myPanel;
     }
 
-    public void displayTitles(){
-        homeView = new HomeView("Search Titles", populateTable("Delete","Update", true), "Logout", "Go back");
-        
+    //To place the panel onto the main frame
+    public void displayTitles() {
+        homeView = new HomeView("Search Titles", populateTable("Delete", "Update", true), "Logout", "Go back");
+
     }
 }

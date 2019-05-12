@@ -16,6 +16,8 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author JadyMartins
  */
+
+//#####CLASS NOT DEVELOPED########
 public class LoyaltyCardView extends JFrame {
     
      private String[][] data = new String[10][4];

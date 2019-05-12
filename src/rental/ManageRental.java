@@ -1,46 +1,34 @@
 package rental;
 
-
-
 import init.HomeView;
-import java.awt.Dimension;
 import java.util.List;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  *
  * @author JadyMartins
  */
+//This class populates the table with array of rental
 public class ManageRental {
+
     
-     JDialog frame;
+    static JTable table;
+    static List<Rental> list;
+    RentalModel rentalModel = new RentalModel();
+    RentalController rentalController = new RentalController();
     HomeView homeView;
-    private String[][] data = new String[4][5];
-    static JTable searchRentals;
-        static JTable table;
-        static List<Rental> list;
-        RentalModel rentalModel = new RentalModel(); 
-        RentalController rentalController = new RentalController();
-        
-    public ManageRental(){
-    }
     
+    public ManageRental() {
+    }
+
     public JPanel populateTable(String id) {
-  
+
+        //table settings
         table = new JTable();
         DefaultTableModel model = new DefaultTableModel();
         Object[] columnsName = new Object[8];
@@ -57,16 +45,15 @@ public class ManageRental {
         Object[] rowData = new Object[8];
         String iD = id;
 
-       list = new ArrayList<Rental>();
-                
-    
- 
-           
-         
+        list = new ArrayList<Rental>();
+
+        //something is worng here
+        //tried to get all rentals and add into an array
+        //then create a list of rentals for specific user (loyaltynumber)
         for (int i = 0; i < rentalModel.allRental.size(); i++) {
-            
-           if (rentalModel.allRental.get(i).getLoyaltyNumber().equals(iD)) {
-               
+
+            if (rentalModel.allRental.get(i).getLoyaltyNumber().equals(iD)) {
+
                 list.add(new Rental(
                         rentalModel.allRental.get(i).getLoyaltyNumber(),
                         rentalModel.allRental.get(i).getRentalID(),
@@ -76,31 +63,26 @@ public class ManageRental {
                         rentalModel.allRental.get(i).getRentalDate(),
                         rentalModel.allRental.get(i).getRentalReturn(),
                         rentalModel.allRental.get(i).getReturnDate()
-                        
                 )
-                
                 );
                 for (int j = 0; j < list.size(); j++) {
-                
-            rowData[0] = list.get(j).getLoyaltyNumber();
-            rowData[1] = list.get(j).getRentalID();
-            rowData[2] = list.get(j).getTitle();
-            rowData[3] = list.get(j).getTitleType();
-            rowData[4] = list.get(j).getRentalStatus();
-            rowData[5] = list.get(j).getRentalDate();
-            rowData[6] = list.get(j).getRentalReturn();
-            rowData[7] = list.get(j).getReturnDate();
-            model.addRow(rowData);
-}
+
+                    rowData[0] = list.get(j).getLoyaltyNumber();
+                    rowData[1] = list.get(j).getRentalID();
+                    rowData[2] = list.get(j).getTitle();
+                    rowData[3] = list.get(j).getTitleType();
+                    rowData[4] = list.get(j).getRentalStatus();
+                    rowData[5] = list.get(j).getRentalDate();
+                    rowData[6] = list.get(j).getRentalReturn();
+                    rowData[7] = list.get(j).getReturnDate();
+                    model.addRow(rowData);
+                }
             }
-            
 
-            
         }
-
-//          
+   
+        //table settings
         JScrollPane sp = new JScrollPane(table, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-       
         table.setModel(model);
         table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
@@ -109,66 +91,12 @@ public class ManageRental {
         table.getSelectionModel().addListSelectionListener(rentalController);
         //Panel which we add the table to  table 
         JPanel myPanel = new JPanel();
-        
+
         //Add ScrollPane to the panel
         myPanel.add(sp);
-        
-        //Populating main frame with Panel
-        //homeView = new HomeView("Select a customer", myPanel, "Logout", "Go back");
 
-        
-        return myPanel;
-      }
-
-    
-    
-    
-    
-    
-    public void viewRentals( ResultSet rs){
-        
-        
-        String[] columnName = {"Transaction", "Title", "Rent Date", "Rent return", "Rent status"};
-        try {
-            int i = 0;
-            while (rs.next()) {
-
-                data[i][0] = rs.getString("rental_id");
-                data[i][1] = rs.getString("title");
-                data[i][2] = rs.getString("rental_date");
-                data[i][3] = rs.getString("rental_return");
-                data[i][4] = rs.getString("rental_status");
-           
-                i++;
-            }
-        } catch (SQLException se) {
-            System.out.println("SQL Exception:");
-
-        }
-
-
-        DefaultTableModel model = new DefaultTableModel(data, columnName);
-        searchRentals = new JTable(model);
-       // searchRentals.getSelectionModel().addListSelectionListener(cController);
-
-        JScrollPane sp = new JScrollPane(searchRentals, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-        searchRentals.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        searchRentals.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-
-        //Panel with appointmnets information
-        JPanel myPanel = new JPanel();
-        //To be displayed on the Top Panel
-        String message = "View bookings";
-        //Label of Button 1 and Button 2
-        String b1 = ("Cancel Appointment");
-        String b2 = ("Logout");
-        //Add elements to the panel
-        myPanel.add(sp);
-        //Populating main Panel with appointment data
-       homeView = new HomeView("Search titles", myPanel, "Logout", "Go back");
-        
-        
-        
+         return myPanel;
     }
-    
+
+  
 }

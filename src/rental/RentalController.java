@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package rental;
 
-
-import customers.ManageCustomerView;
 import init.HomeView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,6 +20,8 @@ public class RentalController implements ActionListener, ListSelectionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
        if (e.getActionCommand().equals("Create Rental from customer Loyalty Card")) {
+           
+           //To be developed
          
 //           RentalModel rentalModel = new RentalModel();
 //          if ( rentalModel.getRental("101").size()>=4){
@@ -46,11 +42,13 @@ public class RentalController implements ActionListener, ListSelectionListener{
      
        
        else if (e.getActionCommand().equals("Return Rental")) {
-           System.out.println("Return Rental");
+       
+           //to be deleloped
            
            
        }   else if (e.getActionCommand().equals("Create Rental")) {
           
+           //create rental is being manipulated in customer controller
        } 
     
     
@@ -58,6 +56,8 @@ public class RentalController implements ActionListener, ListSelectionListener{
 
     @Override
     public void valueChanged(ListSelectionEvent e) {
+        
+        //when row is selected, you can change de status of rental from RT rented to RN - returned
         
     
     }
