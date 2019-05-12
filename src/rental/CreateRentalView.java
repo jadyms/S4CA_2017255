@@ -67,13 +67,15 @@ public class CreateRentalView extends JFrame {
      }
     
     //Receives a customer selected from JTable
-    public JPanel parent(JPanel form) {
+    public void parent(JPanel form) {
         JPanel parent = new JPanel();
 
         ManageRental manageRental = new ManageRental();
         JPanel rentTable = manageRental.populateTable(setloyalty_number);
+        
         ManageTitlesView manageTitles = new ManageTitlesView();
         JPanel table = manageTitles.populateTable();
+        
         JPanel f = form;
 
         parent.add(form);
@@ -81,8 +83,11 @@ public class CreateRentalView extends JFrame {
         parent.add(table);
 
         homeView = new HomeView("Rent Title ", parent, "Logout", "Go back");
-        return parent;
+        //return parent;
     }
+    
+    
+  
     public void createRental(){
   // public void createRental(String setfname, String setlname, String sethold, String setloyalty_number, String setsubscription){
 
@@ -177,64 +182,28 @@ public class CreateRentalView extends JFrame {
    
 
         //Button
-        JButton bsubmit = new JButton("Rent");
+       // JButton bsubmit = new JButton("Rent");
         //fgbc.gridx = 1; //middle column
         //fgbc.gridy = 6; // row 6
         //fgbc.gridwidth = 3; //3 cell
    
-        //Setting button ActionCommand - true if Customer/false if Service Provider
-       // bsubmit.setActionCommand(String.valueOf(isCustomer));
        
        
-        Model myModel = new Model();
-        Subscription subscription = Subscription.valueOf(setsubscription);
-        // ResultSet rs = myModel.showTitles(subscription.getSubscriptonQuery());
-
-       RentalController rentalController = new RentalController();
-      
-         RentalModel rentalModel = new RentalModel();
-          if ( rentalModel.getRental(setloyalty_number).size()>=4){
-              
-              //JDialog to display information below
-              System.out.println("You cant rent any more titles");
-              
-              
-          } else{
+        
            
-           ManageRental manageRental = new ManageRental();
-           JPanel rentTable = manageRental.populateTable(setloyalty_number);
-         
-           
-          
-        ManageTitlesView manageTitles = new ManageTitlesView();
-        JPanel table = manageTitles.populateTable();
+  
        // table.add(bsubmit);
         //parent.add(form);
        // parent.add(rentTable);
         //parent.add(table);
 
-        bsubmit.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-              
-         
-           
-           //display filme escolhido [
-          //button para criar rental
-          //add points to membership card
-                   
-       
-              
-            }
-        }
-        );
-     
+        //bsubmit.addActionListener(new ActionListener() {
+            
 
                   
        //  homeView = new HomeView("Rent Title ", parent, "Logout","Go back"); 
          
-    }
+    
         
         
         

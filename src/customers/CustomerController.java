@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import rental.CreateRentalView;
@@ -32,7 +33,7 @@ public class CustomerController implements ActionListener, ListSelectionListener
         if (e.getActionCommand().equals("Add Customer")) {
 
             AddCustomerView createCustomer = new AddCustomerView();
-            createCustomer.addCustomer("", "", "", "","addCustomerDetails");
+            createCustomer.addCustomer("", "", "", "");
             
      
         } else if (e.getActionCommand().equals("Manage existing customer")) {
@@ -41,7 +42,7 @@ public class CustomerController implements ActionListener, ListSelectionListener
            ManageCustomerView manageCustomer = new ManageCustomerView();
             manageCustomer.populateTable();
 
-        }else if (e.getActionCommand().equals("addCustomerDetails")) {
+        }else if (e.getActionCommand().equals("Submit")) {
             
              //PLACE IT IN CUSTOMER MODEL
              //creating a instance of customer class
@@ -63,27 +64,28 @@ public class CustomerController implements ActionListener, ListSelectionListener
                     
                   
                      //save info on the db
+          
+                    
             }else if (e.getActionCommand().equals("Create Rental")) {
 
-               RentalModel rentalModel = new RentalModel();
-             
-               
-               
-               
-               if ( rentalModel.getRental(manageCustomerView.getLoyaltyNumber()).size()>=4){
-              
-              //JDialog to display information below
-              System.out.println("You cant rent any more titles");
-              
-              
-          } else{
-               
-            ManageCustomerView manageCustomer = new ManageCustomerView();
-            manageCustomer.populateTable();
-            
-            }
-        
-            }
+//               RentalModel rentalModel = new RentalModel();
+//                        
+//               
+//               
+//               if ( rentalModel.getRental(manageCustomerView.getLoyaltyNumber()).size()>=4){
+//              
+//              //JDialog to display information below
+//              System.out.println("You cant rent any more titles");
+//              
+//              
+//          } else{
+//               
+//            ManageCustomerView manageCustomer = new ManageCustomerView();
+//            manageCustomer.populateTable();
+//            
+//            }
+//        
+           }
             }
 
     //When a customer is selected
@@ -112,74 +114,85 @@ public class CustomerController implements ActionListener, ListSelectionListener
                         options,
                         options[2]);    
                 
-                //if create rental
-                if (n == 1) {
+        //if create rental
+        switch (n) {
+            case 1:
+                {
+                   //ManageRental manageRental = new ManageRental();
+                     manageCustomerView = new ManageCustomerView();
+                        
+                        CreateRentalView createRental = new CreateRentalView(
+                                manageCustomerView.getFirstName(),
+                                manageCustomerView.getLastName(),
+                                manageCustomerView.getLoyaltyHold(),
+                                manageCustomerView.getLoyaltyNumber(),
+                                manageCustomerView.getSubscription()
+                        );
+                        
+                        
+                        
+           
+                    //manageRental.populateTable(loyalty_number);
                     
-                    //MAKE RENTAL AS A CLASS AND CREATE AN ARRAY OF RENTALS
+//                    RentalModel rentalModel = new RentalModel();
+//                    if ( rentalModel.getRental((String) manageCustomerView.table.getValueAt(row, 4)).size()>=4){
+//                        //   if ( rentalModel.allRental((String) manageCustomerView.table.getValueAt(row, 4)).size()>=4){
+//                        JOptionPane.showMessageDialog (null,
+//                                "Customer have reached 4 titles rented. Select the option - Manage rental - to return titles" ,
+//                                "You cannot rent any more titles",
+//                                JOptionPane.ERROR_MESSAGE);
+//                        
+//                    }else{
+//                        
+//                        manageCustomerView = new ManageCustomerView();
+//                        
+//                        CreateRentalView createRental = new CreateRentalView(
+//                                manageCustomerView.getFirstName(),
+//                                manageCustomerView.getLastName(),
+//                                manageCustomerView.getLoyaltyHold(),
+//                                manageCustomerView.getLoyaltyNumber(),
+//                                manageCustomerView.getSubscription());
+//                        
+                        
+                        
+                    }   break;
                     
-               ManageRental manageRental = new ManageRental();
-               manageRental.populateTable(loyalty_number);
+                    
+                //} //if update customer
+            case 0:
+                customer.FillCustomerForm(fname,lname, subscription,card, loyalty_number);
+                int x = customerModel.users.indexOf(loyalty_number)+1;
+                customerModel.users.set(x,new Customer(
+                        fname,
+                        lname,
+                        subscription,
+                        card,
+                        loyalty_number,
+                        hold
+                        
+                        
+                ));
                 
-               
-                   RentalModel rentalModel = new RentalModel();
-                     if ( rentalModel.getRental((String) manageCustomerView.table.getValueAt(row, 4)).size()>=4){
-                  //   if ( rentalModel.allRental((String) manageCustomerView.table.getValueAt(row, 4)).size()>=4){
-                         JOptionPane.showMessageDialog (null, 
-                                 "Customer have reached 4 titles rented. Select the option - Manage rental - to return titles" , 
-                                 "You cannot rent any more titles", 
-                                 JOptionPane.ERROR_MESSAGE);
-              
-                                   }else{
-                         
-                    manageCustomerView = new ManageCustomerView();
-                    
-                    CreateRentalView createRental = new CreateRentalView( 
-                            manageCustomerView.getFirstName(), 
-                            manageCustomerView.getLastName(), 
-                            manageCustomerView.getLoyaltyHold(),
-                            manageCustomerView.getLoyaltyNumber(),
-                            manageCustomerView.getSubscription());
-                    
-                    
- 
-                }
-                }//if update customer
-                else if (n == 0) {
-                    
-                    customer.FillCustomerForm(fname,lname, subscription,card, loyalty_number);
-                    
-                    customerModel.users.indexOf(loyalty_number);
-                    customerModel.users.set(customerModel.users.indexOf(loyalty_number)+1,new Customer(
-                    fname,
-                            lname, 
-                            subscription,
-                            card, 
-                            loyalty_number,
-                            hold
-                            
-                                               
-                    ));
-
-                                
-                         //manageCustomerView.getFirstName(),
-                         //manageCustomerView.getLastName(), 
-                         //manageCustomerView.getSubscription(),
-                         //manageCustomerView.getCard());
-                } 
-
-
-
-//ig manage rental
-                else if (n == 2) {
-
+                
+                
+                
+                //manageCustomerView.getFirstName(),
+                //manageCustomerView.getLastName(),
+                //manageCustomerView.getSubscription(),
+                //manageCustomerView.getCard());
+                break;
+            case 2:
+                {
                     //create a try catch in case person has no 
                     Model myModel = new Model();
                     ResultSet rs = myModel.showRental(manageCustomerView.getLoyaltyNumber());
-
                     ManageRental manageRental = new ManageRental();
                     manageRental.viewRentals(rs);
-
+                    break;
                 }
+            default:
+                break;
+        }
 
     
     }

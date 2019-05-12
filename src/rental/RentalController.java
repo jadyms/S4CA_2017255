@@ -51,7 +51,7 @@ public class RentalController implements ActionListener, ListSelectionListener{
            
            
        }   else if (e.getActionCommand().equals("Create Rental")) {
-           System.out.println("Return Rental");
+          
        } 
     
     

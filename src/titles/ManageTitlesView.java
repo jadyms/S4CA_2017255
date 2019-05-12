@@ -121,8 +121,12 @@ public class ManageTitlesView extends JFrame {
         myPanel.add(sp);
         //Populating main Panel with appointment data
 
-        homeView = new HomeView("Search Titles", myPanel, "Logout", "Go back");
+        //homeView = new HomeView("Search Titles", myPanel, "Logout", "Go back");
         return myPanel;
     }
 
+    public void displayTitles(){
+        homeView = new HomeView("Search Titles", populateTable(), "Logout", "Go back");
+        
+    }
 }

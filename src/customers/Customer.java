@@ -83,7 +83,7 @@ public class Customer {
         //call this method passing an user as an object
         updateCustomer = new AddCustomerView();
 
-        updateCustomer.addCustomer(fname, lname, subscription, card, "updateCustomerInfo")
+        updateCustomer.addCustomer(fname, lname, subscription, card)
                 ;
         //  updateCustomer.setValues(fname, lname, card);
 
