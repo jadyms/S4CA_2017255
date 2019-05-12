@@ -60,7 +60,7 @@ public class TitleController implements ActionListener{
                ResultSet rs = myModel.showTitles();
                
            
-             ManageTitles manageTitles = new ManageTitles();
+             ManageTitlesView manageTitles = new ManageTitlesView();
            manageTitles.populateTable();
         }
 }

@@ -2,7 +2,7 @@ package rental;
 
 
 import model.Model;
-import titles.ManageTitles;
+import titles.ManageTitlesView;
 import init.HomeView;
 import java.awt.CardLayout;
 import java.awt.GridBagConstraints;
@@ -72,7 +72,7 @@ public class CreateRentalView extends JFrame {
 
         ManageRental manageRental = new ManageRental();
         JPanel rentTable = manageRental.populateTable(setloyalty_number);
-        ManageTitles manageTitles = new ManageTitles();
+        ManageTitlesView manageTitles = new ManageTitlesView();
         JPanel table = manageTitles.populateTable();
         JPanel f = form;
 
@@ -206,7 +206,7 @@ public class CreateRentalView extends JFrame {
          
            
           
-        ManageTitles manageTitles = new ManageTitles();
+        ManageTitlesView manageTitles = new ManageTitlesView();
         JPanel table = manageTitles.populateTable();
        // table.add(bsubmit);
         //parent.add(form);
