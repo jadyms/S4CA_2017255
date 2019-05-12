@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
@@ -96,22 +97,26 @@ public class HomeView extends JFrame {
         btn3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 //To manage rental options
-                DefaultPanel customer = new DefaultPanel();
-                customer.TwoButtonPanel("Rental","Create Rental from customer Loyalty Card", "Return Rental");
-              
-              //  RentalView rental = new RentalView();
-              //  rental.RentalPanel();
+                
+                JOptionPane.showMessageDialog(null, "Work in Progress. Use Manage Customer area for this feature");
+                
+                
+                //DefaultPanel customer = new DefaultPanel();
+                //customer.TwoButtonPanel("Rental","Create Rental from customer Loyalty Card", "Return Rental");
+           
             }
         });
 
         btn4.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 //To manage Loyalty Card
-                Model myModel = new Model();
-                ResultSet rs = myModel.showPoints();
+                JOptionPane.showMessageDialog(null, "Option not available. Summer project for this feature here...");
+                
+               // Model myModel = new Model();
+                //ResultSet rs = myModel.showPoints();
 
-                LoyaltyCardView loyaltyCard = new LoyaltyCardView();
-                loyaltyCard.viewPoints(rs);
+                //LoyaltyCardView loyaltyCard = new LoyaltyCardView();
+                //loyaltyCard.viewPoints(rs);
 
             }
         });

@@ -1,8 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ *
+ * @author JadyMartins
  */
+
 package titles;
 
 import java.sql.ResultSet;
@@ -13,26 +13,24 @@ import java.util.logging.Logger;
 import model.Model;
 import model.db;
 
-/**
- *
- * @author JadyMartins
- */
 public class TitleModel {
     
+    //Declaring array of titles to hold all the titles in the DB
     static   ArrayList<Titles> titles;
  
      public static ArrayList<Titles> getTitles(){
                
                 titles = new ArrayList<Titles>();
-                
-               
-               Titles t;
+                Titles t;
               
                try{
-                    Model myModel = new Model();
+                   //Connect with the db and get all the titles
+               Model myModel = new Model();
                ResultSet rs = myModel.showTitles();
                
                    while(rs.next()){
+                       //Create a new title t for every row
+                       //until it reaches the last row
                        t = new Titles(
                        rs.getString("titleID"),
                        rs.getString("title"),
@@ -43,6 +41,7 @@ public class TitleModel {
                        rs.getString("additional")
                                
                     );
+                       //add the titles to the array
                        titles.add(t);
                    }
                    

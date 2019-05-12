@@ -10,8 +10,7 @@ import java.sql.Statement;
 
 public class db {
 
-    String[][] data = new String[50][4];
-    DefaultPanel customerView;
+   // DefaultPanel customerView;
     Connection conn = null;
     Statement stmt = null;
     ResultSet rs = null;
@@ -19,11 +18,13 @@ public class db {
     public db() {
         connect();
     }
+    //Not all the maethods have been used 
+    //due to the project is not concluded
+    //as planned 
 
     public void connect() {
         try {
             // Load the database driver
-            // Class.forName("com.mysql.jc.jdbc.Driver").newInstance() ;
             Class.forName("com.mysql.jdbc.Driver").newInstance();
 
             String dbServer = "jdbc:mysql://localhost:3306/ultra_vision";
@@ -98,7 +99,8 @@ public class db {
 
         return false;
     }
-  public ResultSet newQuery(String query) {
+  
+    public ResultSet newQuery(String query) {
         try {
             rs = stmt.executeQuery(query);
 

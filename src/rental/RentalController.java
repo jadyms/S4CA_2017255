@@ -26,7 +26,6 @@ public class RentalController implements ActionListener, ListSelectionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
        if (e.getActionCommand().equals("Create Rental from customer Loyalty Card")) {
-           System.out.println("Create Rental from Main menu");
          
 //           RentalModel rentalModel = new RentalModel();
 //          if ( rentalModel.getRental("101").size()>=4){
