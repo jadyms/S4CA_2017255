@@ -4,8 +4,10 @@ package rental;
 
 import init.HomeView;
 import java.awt.Dimension;
+import java.util.List;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -30,6 +32,7 @@ public class ManageRental {
     private String[][] data = new String[4][5];
     static JTable searchRentals;
         static JTable table;
+        static List<Rental> list;
         RentalModel rentalModel = new RentalModel(); 
         RentalController rentalController = new RentalController();
         
@@ -54,20 +57,48 @@ public class ManageRental {
         Object[] rowData = new Object[8];
         String iD = id;
 
-        for (int i = 0; i < rentalModel.getRental(iD).size(); i++) {
-
-            rowData[0] = rentalModel.getRental(iD).get(i).getLoyaltyNumber();
-            rowData[1] = rentalModel.getRental(iD).get(i).getRentalID();
-            rowData[2] = rentalModel.getRental(iD).get(i).getTitle();
-            rowData[3] = rentalModel.getRental(iD).get(i).getTitleType();
-            rowData[4] = rentalModel.getRental(iD).get(i).getRentalStatus();
-            rowData[5] = rentalModel.getRental(iD).get(i).getRentalDate();
-            rowData[6] = rentalModel.getRental(iD).get(i).getRentalReturn();
-            rowData[7] = rentalModel.getRental(iD).get(i).getReturnDate();
+       list = new ArrayList<Rental>();
+                
+    
+ 
+           
+         
+        for (int i = 0; i < rentalModel.allRental.size(); i++) {
+            
+           if (rentalModel.allRental.get(i).getLoyaltyNumber().equals(iD)) {
+               
+                list.add(new Rental(
+                        rentalModel.allRental.get(i).getLoyaltyNumber(),
+                        rentalModel.allRental.get(i).getRentalID(),
+                        rentalModel.allRental.get(i).getTitle(),
+                        rentalModel.allRental.get(i).getTitleType(),
+                        rentalModel.allRental.get(i).getRentalStatus(),
+                        rentalModel.allRental.get(i).getRentalDate(),
+                        rentalModel.allRental.get(i).getRentalReturn(),
+                        rentalModel.allRental.get(i).getReturnDate()
+                        
+                )
+                
+                );
+                for (int j = 0; j < list.size(); j++) {
+                
+            rowData[0] = list.get(j).getLoyaltyNumber();
+            rowData[1] = list.get(j).getRentalID();
+            rowData[2] = list.get(j).getTitle();
+            rowData[3] = list.get(j).getTitleType();
+            rowData[4] = list.get(j).getRentalStatus();
+            rowData[5] = list.get(j).getRentalDate();
+            rowData[6] = list.get(j).getRentalReturn();
+            rowData[7] = list.get(j).getReturnDate();
             model.addRow(rowData);
+}
+            }
+            
 
+            
         }
 
+//          
         JScrollPane sp = new JScrollPane(table, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
        
         table.setModel(model);

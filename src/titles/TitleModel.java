@@ -18,10 +18,12 @@ import model.db;
  * @author JadyMartins
  */
 public class TitleModel {
+    
+    static   ArrayList<Titles> titles;
  
      public static ArrayList<Titles> getTitles(){
                
-                ArrayList<Titles> titles = new ArrayList<Titles>();
+                titles = new ArrayList<Titles>();
                 
                
                Titles t;

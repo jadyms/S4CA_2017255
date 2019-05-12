@@ -77,13 +77,14 @@ public class Customer {
         return null;
     }
 
-    public void FillCustomerForm(String fname, String lname, String subscription, String card) {
+    public void FillCustomerForm(String fname, String lname, String subscription, String card, String loyalty_card) {
 
         //get user info from the db
         //call this method passing an user as an object
         updateCustomer = new AddCustomerView();
 
-        updateCustomer.addCustomer(fname, lname, subscription, card);
+        updateCustomer.addCustomer(fname, lname, subscription, card, "updateCustomerInfo")
+                ;
         //  updateCustomer.setValues(fname, lname, card);
 
     }

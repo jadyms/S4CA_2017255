@@ -67,7 +67,7 @@ public class AddCustomerView extends JFrame {
     //Form to get Customer details
     //JTextField set as "" when adding a new customer
     //JTextField set with user details when Updating Customer
-    public void addCustomer(String setfname, String setlname, String setsubscription, String setcard ){
+    public void addCustomer(String setfname, String setlname, String setsubscription, String setcard, String submit ){
             
         //Panel for form 
         JPanel form = new JPanel(new GridBagLayout());
@@ -137,7 +137,8 @@ public class AddCustomerView extends JFrame {
         form.add(bsubmit, fgbc);
         
         //ActionEvents
-        bsubmit.setActionCommand("addCustomerDetails");
+          bsubmit.setActionCommand(submit);
+        //bsubmit.setActionCommand("addCustomerDetails");
         customerController = new CustomerController();
         bsubmit.addActionListener(customerController);
        

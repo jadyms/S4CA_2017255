@@ -28,24 +28,24 @@ public class RentalController implements ActionListener, ListSelectionListener{
        if (e.getActionCommand().equals("Create Rental from customer Loyalty Card")) {
            System.out.println("Create Rental from Main menu");
          
-           RentalModel rentalModel = new RentalModel();
-          if ( rentalModel.getRental("101").size()>=4){
-              
-              //JDialog to display information below
-              System.out.println("You cant rent any more titles");
-              
-              
-          } else{
-               
-            ManageCustomerView manageCustomer = new ManageCustomerView();
-            manageCustomer.populateTable();
-            
+//           RentalModel rentalModel = new RentalModel();
+//          if ( rentalModel.getRental("101").size()>=4){
+//              
+//              //JDialog to display information below
+//              System.out.println("You cant rent any more titles");
+//              
+//              
+//          } else{
+//               
+//            ManageCustomerView manageCustomer = new ManageCustomerView();
+//            manageCustomer.populateTable();
+//            
      //ManageRental manageRental = new ManageRental();
      //homeView = new HomeView("Select a customer",  manageRental.populateTable(), "Logout", "Go back");
   
           }
      
-       }
+       
        else if (e.getActionCommand().equals("Return Rental")) {
            System.out.println("Return Rental");
            
@@ -59,7 +59,8 @@ public class RentalController implements ActionListener, ListSelectionListener{
 
     @Override
     public void valueChanged(ListSelectionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+    
     }
     
 }

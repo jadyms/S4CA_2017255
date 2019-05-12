@@ -32,7 +32,7 @@ public class CustomerController implements ActionListener, ListSelectionListener
         if (e.getActionCommand().equals("Add Customer")) {
 
             AddCustomerView createCustomer = new AddCustomerView();
-            createCustomer.addCustomer("", "", "", "");
+            createCustomer.addCustomer("", "", "", "","addCustomerDetails");
             
      
         } else if (e.getActionCommand().equals("Manage existing customer")) {
@@ -42,12 +42,11 @@ public class CustomerController implements ActionListener, ListSelectionListener
             manageCustomer.populateTable();
 
         }else if (e.getActionCommand().equals("addCustomerDetails")) {
-
-            //PLACE IT IN CUSTOMER MODEL
+            
+             //PLACE IT IN CUSTOMER MODEL
              //creating a instance of customer class
              addCustomerView = new AddCustomerView(); 
-            // int last = Integer.valueof((String) customerModel.users.get(customerModel.users.size() - 1));
-       
+            
             int last =  Integer.parseInt(customerModel.users.get(customerModel.users.size()-1).getLoyaltyNumber())+1;
                      customerModel.users.add(new Customer(
                      
@@ -58,16 +57,19 @@ public class CustomerController implements ActionListener, ListSelectionListener
                      String.valueOf(last),
                               "0"
                                   ));
-                
-     
-        
-                   JOptionPane.showMessageDialog(null, "Form submitted");
+                           
+                   JOptionPane.showMessageDialog(null, "Customer created. You can manage details in Manage Customer");
       
-                   
+                    
+                  
                      //save info on the db
             }else if (e.getActionCommand().equals("Create Rental")) {
 
                RentalModel rentalModel = new RentalModel();
+             
+               
+               
+               
                if ( rentalModel.getRental(manageCustomerView.getLoyaltyNumber()).size()>=4){
               
               //JDialog to display information below
@@ -114,8 +116,14 @@ public class CustomerController implements ActionListener, ListSelectionListener
                 if (n == 1) {
                     
                     //MAKE RENTAL AS A CLASS AND CREATE AN ARRAY OF RENTALS
+                    
+               ManageRental manageRental = new ManageRental();
+               manageRental.populateTable(loyalty_number);
+                
+               
                    RentalModel rentalModel = new RentalModel();
                      if ( rentalModel.getRental((String) manageCustomerView.table.getValueAt(row, 4)).size()>=4){
+                  //   if ( rentalModel.allRental((String) manageCustomerView.table.getValueAt(row, 4)).size()>=4){
                          JOptionPane.showMessageDialog (null, 
                                  "Customer have reached 4 titles rented. Select the option - Manage rental - to return titles" , 
                                  "You cannot rent any more titles", 
@@ -133,23 +141,26 @@ public class CustomerController implements ActionListener, ListSelectionListener
                             manageCustomerView.getSubscription());
                     
                     
-                    
-                   /* createRental.createRental(
-                             manageCustomerView.getFirstName(), 
-                            manageCustomerView.getLastName(), 
-                            manageCustomerView.getLoyaltyHold(),
-                            manageCustomerView.getLoyaltyNumber(),
-                            manageCustomerView.getSubscription());
-*/
+ 
                 }
                 }//if update customer
                 else if (n == 0) {
+                    
+                    customer.FillCustomerForm(fname,lname, subscription,card, loyalty_number);
+                    
+                    customerModel.users.indexOf(loyalty_number);
+                    customerModel.users.set(customerModel.users.indexOf(loyalty_number)+1,new Customer(
+                    fname,
+                            lname, 
+                            subscription,
+                            card, 
+                            loyalty_number,
+                            hold
+                            
+                                               
+                    ));
 
-              
                                 
-                                
-                                
-                                customer.FillCustomerForm(fname,lname, subscription,card);
                          //manageCustomerView.getFirstName(),
                          //manageCustomerView.getLastName(), 
                          //manageCustomerView.getSubscription(),

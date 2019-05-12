@@ -1,6 +1,7 @@
 package titles;
 
 
+import customers.CustomerController;
 import init.HomeView;
 import java.awt.CardLayout;
 import java.awt.GridBagConstraints;
@@ -30,25 +31,25 @@ import javax.swing.table.DefaultTableModel;
  * @author JadyMartins
  */
 public class AddTitleView extends JFrame {
-       
-    //WORK WITH ENUMS
+
     
-    private JTextField tfID;
-    private JTextField tfMedia;
-    private JTextField tfYear;
-    private JTextField tfRent;
-    private JTextField tfTitle;
-    private JTextField tfCard;
-    private JLabel type;
-    // private JComboBox<String> type;
-    private String[] subscription = new String[]{"TV Lover", "Music Lover", "Premium", "Movie Lover"};
-    //String titleType;
+    private static JLabel tfID;
+    private static JLabel mediaType;
+    private static JTextField tfYear;
+    private static JTextField tfPrice;
+    private static JTextField tfTitle;
+    private static JTextField tfAdditional;
+    private static JLabel type;
+    private static JComboBox<String> titleType;
+
     JDialog frame;
     HomeView homeView;
-    private String[][] data = new String[50][3];
+
     static JTable searchTitles;
     static JPanel myPanel;
     static JPanel myPanel2;
+    Media media;
+    TitleController titleController;
 
        
     public AddTitleView(){
@@ -56,7 +57,7 @@ public class AddTitleView extends JFrame {
     }
     
     
-    public void addTitle(String titleType){
+    public void addTitle(String titleID){
             
         //Panel for form 
         JPanel form = new JPanel(new GridBagLayout());
@@ -73,92 +74,144 @@ public class AddTitleView extends JFrame {
         fgbc.gridwidth = 1; //1 cell
         form.add(id, fgbc);
 
-        JLabel lmedia = new JLabel("Media Type: ");
+        JLabel ltype = new JLabel("Title Type: ");
         fgbc.gridx = 0; //leftmost column
         fgbc.gridy = 1; // row 1
         fgbc.gridwidth = 1; //1 cell
-        form.add(lmedia, fgbc);
+        form.add(ltype, fgbc);
+        
+            JLabel ltitle = new JLabel("Title name: ");
+        fgbc.gridx = 0; //leftmost column
+        fgbc.gridy = 2; // row 3
+        fgbc.gridwidth = 1; //1 cell
+        form.add(ltitle, fgbc);
 
         JLabel lyear = new JLabel("Year: ");
         fgbc.gridx = 0; //leftmost column
-        fgbc.gridy = 2; // row 2
+        fgbc.gridy = 3; // row 4
         fgbc.gridwidth = 1; //1 cell
         form.add(lyear, fgbc);
 
         
-        JLabel lrent = new JLabel("Rent: ");
-        fgbc.gridx = 0; //leftmost column
-        fgbc.gridy = 3; // row 4
-        fgbc.gridwidth = 1; //1 cell
-        form.add(lrent, fgbc);
-        
-        
-        JLabel ltype = new JLabel("Title Type: ");
+        JLabel lRent = new JLabel("Price: ");
         fgbc.gridx = 0; //leftmost column
         fgbc.gridy = 4; // row 5
         fgbc.gridwidth = 1; //1 cell
-        form.add(ltype, fgbc);
+        form.add(lRent, fgbc);
         
-        JLabel lcard = new JLabel("Credit Card: ");
+        
+        JLabel lmedia = new JLabel("Media Type: ");
         fgbc.gridx = 0; //leftmost column
         fgbc.gridy = 5; // row 6
         fgbc.gridwidth = 1; //1 cell
-        form.add(lcard, fgbc);
+        form.add(lmedia, fgbc);
+     
+        
+         JLabel ladditional = new JLabel("Additional Information(artist, band): ");
+        fgbc.gridx = 0; //leftmost column
+        fgbc.gridy = 6; // row 7
+        fgbc.gridwidth = 1; //1 cell
+        form.add(ladditional, fgbc);
 
         //Form textfield       
-        tfID = new JTextField(25);
+        tfID = new JLabel(titleID);
         fgbc.gridx = 1; //middle column
         fgbc.gridy = 0; //top row
         fgbc.gridwidth = 3; //3 cell
         form.add(tfID, fgbc);
 
-        tfMedia = new JTextField(25);
+        titleType = new JComboBox(media.values());
         fgbc.gridx = 1; //middle column
         fgbc.gridy = 1; // row 1
         fgbc.gridwidth = 3; //3 cell
-        form.add(tfMedia, fgbc);
+        form.add(titleType, fgbc);
 
-        tfYear = new JTextField(25);
+        tfTitle= new JTextField(25);
         fgbc.gridx = 1; //middle column
         fgbc.gridy = 2; // row 2
         fgbc.gridwidth = 3; //3 cell
+        form.add(tfTitle, fgbc);
+
+        tfYear = new JTextField(25);
+        fgbc.gridx = 1; //middle column
+        fgbc.gridy = 3; // row 2
+        fgbc.gridwidth = 3; //3 cell
         form.add(tfYear, fgbc);
 
-         tfRent = new JTextField(25);
-        fgbc.gridx = 1; //middle column
-        fgbc.gridy = 3; // row 3
-        fgbc.gridwidth = 3; //3 cell
-        form.add(tfRent, fgbc);
-       // subscriptionType.setVisible(isCustomer);
-       
-        type = new JLabel(titleType);
+         tfPrice = new JTextField(25);
         fgbc.gridx = 1; //middle column
         fgbc.gridy = 4; // row 3
         fgbc.gridwidth = 3; //3 cell
-        form.add(type, fgbc);
+        form.add(tfPrice, fgbc);
        // subscriptionType.setVisible(isCustomer);
        
-        tfCard = new JTextField(25);
+      //media = (Media) titleType.getSelectedItem();
+       
+ 
+
+  //      mediaType = new JComboBox(media.getMedia());
+  //Improvement = could be better if it was a dynamic JComboBox
+  
+        mediaType = new JLabel("Music = CD / Box Set and Live Concert = DVD / Movie = BluRay");
         fgbc.gridx = 1; //middle column
         fgbc.gridy = 5; // row 3
         fgbc.gridwidth = 3; //3 cell
-        form.add(tfCard, fgbc);
+        form.add(mediaType, fgbc);
+       // subscriptionType.setVisible(isCustomer);
+       
+        tfAdditional = new JTextField(25);
+        fgbc.gridx = 1; //middle column
+        fgbc.gridy = 6; // row 3
+        fgbc.gridwidth = 3; //3 cell
+        form.add(tfAdditional, fgbc);
        // subscriptionType.setVisible(isCustomer);
 
 
         //Button
         JButton bsubmit = new JButton("Submit");
         fgbc.gridx = 1; //middle column
-        fgbc.gridy = 6; // row 6
+        fgbc.gridy = 7; // row 6
         fgbc.gridwidth = 3; //3 cell
         form.add(bsubmit, fgbc);
-        //Setting button ActionCommand - true if Customer/false if Service Provider
-       // bsubmit.setActionCommand(String.valueOf(isCustomer));
-       // bsubmit.addActionListener(myRegController);
+          titleController = new TitleController();
+        bsubmit.addActionListener(titleController);
+      
      
          homeView = new HomeView("New Title Details ", form, "Logout", "Go back");
     }
 
    
+    //Getters
+    
+    public String getTitleId() {
+        return tfID.getText();
+    }
+
+    public String getTitleName() {
+        return tfTitle.getText();
+    }
+
+    public String getTitleType() {
+        return String.valueOf(titleType.getSelectedItem());
+    }
+
+    public String getMediaType() {
+        media = (Media) titleType.getSelectedItem();
+        return media.getMedia();
+    }
+
+    public String getYear() {
+        return tfYear.getText();
+    }
+
+    public String getRate() {
+        return tfPrice.getText();
+    }
+
+    public String getAdditonal() {
+        return tfAdditional.getText();
+    }
+       
+     
    
 }
