@@ -43,7 +43,7 @@ public class ManageTitlesView extends JFrame {
     HomeView homeView;
     TitleModel titleModel = new TitleModel();
 
-    public JPanel populateTable() {
+    public JPanel populateTable(String x, String y, boolean z) {
        
         table = new JTable();
         DefaultTableModel model = new DefaultTableModel();
@@ -77,6 +77,8 @@ public class ManageTitlesView extends JFrame {
         table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
         table.setPreferredScrollableViewportSize(table.getPreferredSize());
         table.setFillsViewportHeight(true);
+        table.setRowSelectionAllowed(z);
+        table.setColumnSelectionAllowed(z);
         table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 
             @Override
@@ -93,7 +95,7 @@ public class ManageTitlesView extends JFrame {
 
                 String message = (title + " " + titleType + " " + mediaType + " " + titleID + " " + year + " " + rate + " " + additional);
 
-                Object[] options = {"Delete", "Update"};
+                Object[] options = {x, y};
                 int n = JOptionPane.showOptionDialog(null,
                         "Title " + message,
                         "Select an option",
@@ -126,7 +128,7 @@ public class ManageTitlesView extends JFrame {
     }
 
     public void displayTitles(){
-        homeView = new HomeView("Search Titles", populateTable(), "Logout", "Go back");
+        homeView = new HomeView("Search Titles", populateTable("Delete","Update", true), "Logout", "Go back");
         
     }
 }

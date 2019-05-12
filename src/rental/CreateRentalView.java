@@ -10,6 +10,7 @@ import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -74,13 +75,19 @@ public class CreateRentalView extends JFrame {
         JPanel rentTable = manageRental.populateTable(setloyalty_number);
         
         ManageTitlesView manageTitles = new ManageTitlesView();
-        JPanel table = manageTitles.populateTable();
+        
+        JPanel table = manageTitles.populateTable("Create Rent", "Choose another title", false);
         
         JPanel f = form;
+     
 
         parent.add(form);
+        parent.add(new JLabel("Rented titles for user"));
         parent.add(rentTable);
+        parent.add(new JLabel("Select a title to rent"));
         parent.add(table);
+        
+        parent.setLayout(new BoxLayout(parent, BoxLayout.Y_AXIS));
 
         homeView = new HomeView("Rent Title ", parent, "Logout", "Go back");
         //return parent;

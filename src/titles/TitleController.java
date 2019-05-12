@@ -56,9 +56,6 @@ public class TitleController implements ActionListener{
 
         } else if (e.getActionCommand().equals("Manage existing title")) {
 
-              //Model myModel = new Model();
-               //ResultSet rs = myModel.showTitles();
-               
            
            ManageTitlesView manageTitles = new ManageTitlesView();
            manageTitles.displayTitles();
